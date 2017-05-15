@@ -1,32 +1,14 @@
 <div fxFlexFill fxLayout="column">
-    <md-toolbar class="main-toolbar">
-        <div>Title</div>
-        <div class="toolbar-menu">
-            <a md-raised-button color="primary">Login</a>
-        </div>
-    </md-toolbar>
+
+    <layout-header></layout-header>
 
     <div fxFlex style="margin:10px">
         <div class="container" fxLayout="row" fxLayoutGap="10px">
-            <div fxFlex="25">
-                <md-nav-list class="sub-menu">
-                    <a md-list-item href="#">
-                        <md-icon>done</md-icon> Link 1</a>
-                    <a md-list-item href="#">
-                        <md-icon>favorite</md-icon> Link 2</a>
-                    <a md-list-item href="#">
-                        <md-icon>face</md-icon> Link 3</a>
-                    <a md-list-item href="#">
-                        <md-icon>code</md-icon> Link 4</a>
-                </md-nav-list>
-            </div>
-            <md-card fxFlex>Right</md-card>
+            <router-outlet></router-outlet>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            Header text
-        </div>
-    </footer>
+    <layout-footer></layout-footer>
+
+
 </div>

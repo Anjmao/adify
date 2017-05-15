@@ -15,5 +15,4 @@ const userSchema = new Schema({
     }
 }, { timestamps: true });
 
-//export const User: UserType = mongoose.model<UserType>('User', userSchema);
 export const Job = model<JobModel>("Job", userSchema);

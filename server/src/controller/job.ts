@@ -5,7 +5,6 @@ interface ListJobsResponse {
     jobs: JobModel[]
 }
 
-
 export function listJobs(req: Request, rsp: Response, next: NextFunction) {
     Job.find().then(jobs => {
         let jobsList: ListJobsResponse = {
@@ -34,7 +33,6 @@ export function getJob(req: Request, rsp: Response, next: NextFunction) {
 
 export function createJob(req: Request, rsp: Response, next: NextFunction) {
     let job = new Job(req.body)
-
     job.save((err, savedJob) => {
         if (err) {
             rsp.status(400)
