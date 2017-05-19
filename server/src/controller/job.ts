@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express'
 import { JobModel, Job } from "../model/job";
 
-interface ListJobsResponse {
+export interface ListJobsResponse {
     jobs: JobModel[]
 }
 

@@ -8,8 +8,8 @@ export function getUser(req: Request, rsp: Response, next: NextFunction) {
         return rsp.json({ error: `user is not logged in` })
     }
 
-    User.findOne({ id: usr.id }, (err, user) => {
-        if (err) {
+    User.findOne({ uniqueId: usr.id }, (err, user) => {
+        if (!user) {
             return rsp.json({ error: `user ${usr.id} not found` })
         }
 

@@ -5,6 +5,7 @@ const passport = require('passport');
 const session = require('express-session');
 const LinkedInStrategy = require('passport-linkedin').Strategy;
 const MongoStore = require('connect-mongo')(session);
+const cors = require('cors')
 
 import { listJobs, createJob, updateJob, getJob } from "./controller/job";
 import { getUser } from "./controller/user";
@@ -30,11 +31,11 @@ passport.use(new LinkedInStrategy({
     callbackURL: "http://localhost:8000/auth/linkedin/callback"
 },
     (token, tokenSecret, profile, done) => {
-        createOrUpdateUser(profile, tokenSecret, () => {
+        createOrUpdateUser(profile, token).then(() => {
             done(null, profile)
-        }, () => {
+        }).catch((err) => {
+            console.log(err)
             done(null, profile)
-            console.log('error while create user', profile)
         })
     }
 ));
@@ -64,6 +65,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cors());
 
 app.get('/', (req, rsp) => {
     rsp.json({

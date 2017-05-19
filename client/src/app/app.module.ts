@@ -1,4 +1,5 @@
-import { AdformModule } from './adform/adform.module';
+import { FormModule } from './form/form.module';
+import { DetailsModule } from './details/details.module';
 import { HeaderComponent } from './shared/layout/header.component';
 import { FooterComponent } from './shared/layout/footer.component';
 import { AuthModule } from './auth/auth.module';
@@ -26,12 +27,13 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
         rootRouting,
         AuthModule,
         HomeModule,
-        AdformModule,
         BrowserModule,
         FormsModule,
         HttpModule,
         FlexLayoutModule,
         SharedModule,
+        FormModule,
+        DetailsModule,
     ],
     providers: [],
     bootstrap: [AppComponent]

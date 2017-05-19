@@ -1,7 +1,4 @@
-export class User {
-  email: string;
-  token: string;
-  username: string;
-  bio: string;
-  image: string;
+//export { UserModel } from '../../../../../server/src/model/user';
+export type UserModel = {
+    token: string
 }

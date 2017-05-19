@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { User } from '../models';
+//import { UserModel } from '../models';
 import { UserService } from '../services';
 
 @Component({
@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
         private userService: UserService
     ) { }
 
-    currentUser: User;
+    currentUser: any;
 
     ngOnInit() {
         this.userService.currentUser.subscribe(

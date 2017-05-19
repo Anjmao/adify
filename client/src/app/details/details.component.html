@@ -1,0 +1,10 @@
+<div *ngIf="job">
+    <h1>{{job.title}}</h1>
+    <md-card>
+        <md-card-content>
+            <p>
+                {{job|json}}
+            </p>
+        </md-card-content>
+    </md-card>
+</div>

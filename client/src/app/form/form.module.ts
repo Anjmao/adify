@@ -1,14 +1,14 @@
+import { FormComponent } from './form.component';
 import { SharedModule } from '../shared/shared.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AdformComponent } from './adform.component';
 import { RouterModule } from "@angular/router";
 
 
-const adformRouting: ModuleWithProviders = RouterModule.forChild([
+const routing: ModuleWithProviders = RouterModule.forChild([
     {
-        path: 'adform',
-        component: AdformComponent,
+        path: 'job/create',
+        component: FormComponent,
         //canActivate: [NoAuthGuard],
     },
     /*{
@@ -22,8 +22,8 @@ const adformRouting: ModuleWithProviders = RouterModule.forChild([
     imports: [
         CommonModule,
         SharedModule,
-        adformRouting,
+        routing,
     ],
-    declarations: [AdformComponent]
+    declarations: [FormComponent]
 })
-export class AdformModule { }
+export class FormModule { }
