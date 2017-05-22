@@ -3,12 +3,18 @@ import { NoAuthGuard } from './no-auth-guard.service';
 import { NgModule, ModuleWithProviders, } from '@angular/core';
 import { RouterModule } from '@angular/router'
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
+import { LoginComponent } from './login/login.component';
+import { CompleteComponent } from './complete/complete.component';
 
 const authRouting: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'login',
         component: LoginComponent,
+        canActivate: [NoAuthGuard],
+    },
+    {
+        path: 'login/complete/:token',
+        component: CompleteComponent,
         canActivate: [NoAuthGuard],
     }
 ])
@@ -22,6 +28,6 @@ const authRouting: ModuleWithProviders = RouterModule.forChild([
     providers: [
         NoAuthGuard,
     ],
-    declarations: [LoginComponent]
+    declarations: [LoginComponent, CompleteComponent]
 })
 export class AuthModule { }

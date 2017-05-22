@@ -21,7 +21,7 @@ export class ApiService {
         };
 
         if (this.jwtService.getToken()) {
-            headersConfig['Authorization'] = `Token ${this.jwtService.getToken()}`;
+            headersConfig['Authorization'] = `JWT ${this.jwtService.getToken()}`;
         }
         return new Headers(headersConfig);
     }

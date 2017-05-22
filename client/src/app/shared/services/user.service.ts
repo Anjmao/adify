@@ -11,7 +11,6 @@ import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 import { UserModel } from '../models';
 
-
 @Injectable()
 export class UserService {
     private currentUserSubject = new BehaviorSubject<UserModel>(<UserModel>{});
@@ -28,9 +27,9 @@ export class UserService {
 
     populate() {
         if (this.jwtService.getToken()) {
-            this.apiService.get('/user')
+            this.getUser()
                 .subscribe(
-                data => this.setAuth(data.user),
+                data => this.setAuth(data),
                 err => this.purgeAuth()
                 );
         } else {
@@ -39,9 +38,13 @@ export class UserService {
     }
 
     setAuth(user: UserModel) {
-        this.jwtService.saveToken(user.token);
+        //this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
+    }
+
+    getUser(): Observable<UserModel> {
+        return this.apiService.get('/user')
     }
 
     purgeAuth() {
@@ -74,6 +77,10 @@ export class UserService {
                 this.currentUserSubject.next(data.user);
                 return data.user;
             });
+    }
+
+    logout(): Observable<any> {
+        return this.apiService.get('/logout').map(() => this.purgeAuth())
     }
 
 }

@@ -1,20 +1,23 @@
-<h1>
-    Job form
-</h1>
+<div class="container">
+    <h1>
+        Job form
+    </h1>
 
-<md-card class="job-form-card">
-    <form [formGroup]="jobForm">
+    <md-card class="job-form-card">
+        <form [formGroup]="jobForm">
 
-        <md-input-container>
-            <input mdInput formControlName="title" placeholder="Title">
-        </md-input-container>
+            <md-input-container>
+                <input mdInput formControlName="title" placeholder="Title">
+            </md-input-container>
 
-        <md-input-container>
-            <textarea mdInput formControlName="body" placeholder="Body"></textarea>
-        </md-input-container>
+            <md-input-container>
+                <textarea mdInput formControlName="body" placeholder="Body"></textarea>
+            </md-input-container>
 
-        <div>
-            <button md-raised-button color="primary" (click)="saveForm()">Save</button>
-        </div>
-    </form>
-</md-card>
+            <div>
+                <button md-raised-button color="primary" (click)="saveForm()">Save</button>
+            </div>
+        </form>
+    </md-card>
+
+</div>

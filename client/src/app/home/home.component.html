@@ -1,14 +1,13 @@
-<md-card class="job-card" *ngFor="let job of jobs">
-    <md-card-header>
-        <md-card-title>{{job.title}}</md-card-title>
-        <md-card-subtitle>{{job._id}}</md-card-subtitle>
-    </md-card-header>
-    <md-card-content>
-        <p>
-            {{job.body}}
-        </p>
-    </md-card-content>
-    <md-card-actions>
-        <a routerLink="/job/{{job._id}}" md-button>Details</a>
-    </md-card-actions>
-</md-card>
+<div class="container" fxLayout="row" fxLayoutGap="10px">
+    <md-card class="job-card" *ngFor="let job of jobs">
+        <md-card-header>
+            <md-card-title><a routerLink="/job/{{job._id}}">{{job.title}}</a></md-card-title>
+            <md-card-subtitle>{{job._id}}</md-card-subtitle>
+        </md-card-header>
+        <md-card-content>
+            <p>
+                {{job.body}}
+            </p>
+        </md-card-content>
+    </md-card>
+</div>
