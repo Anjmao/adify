@@ -1,4 +1,4 @@
-import { JobService } from 'app/shared/services/job.service';
+import { AdService } from 'app/shared/services/ad.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 
@@ -8,21 +8,21 @@ import { FormBuilder, FormGroup } from "@angular/forms";
     styleUrls: ['./form.component.scss']
 })
 export class FormComponent implements OnInit {
-    jobForm: FormGroup;
+    adForm: FormGroup;
 
-    constructor(private fb: FormBuilder, private jobService: JobService) { }
+    constructor(private fb: FormBuilder, private adService: AdService) { }
 
     ngOnInit() {
-        this.jobForm = this.fb.group({
+        this.adForm = this.fb.group({
             title: '',
             body: ''
         })
     }
 
     saveForm() {
-        console.log(this.jobForm.value)
+        console.log(this.adForm.value)
 
-        this.jobService.createJob(this.jobForm.value).subscribe((rsp) => {
+        this.adService.createAd(this.adForm.value).subscribe((rsp) => {
             console.log(rsp)
         })
     }

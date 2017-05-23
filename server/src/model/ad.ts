@@ -1,11 +1,11 @@
 import { Document, Schema, model } from "mongoose";
 
-export type JobModel = Document & {
+export type AdModel = Document & {
     title: string,
     body: string,
 };
 
-const userSchema = new Schema({
+const adSchema = new Schema({
     title: {
         type: String,
     },
@@ -15,4 +15,4 @@ const userSchema = new Schema({
     }
 }, { timestamps: true });
 
-export const Job = model<JobModel>("Job", userSchema);
+export const Ad = model<AdModel>("Ad", adSchema);

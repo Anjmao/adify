@@ -8,8 +8,8 @@ const cors = require('cors');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const jwt = require('jwt-simple');
-import { listJobs, createJob, updateJob, getJob } from "./controller/job";
-import { getUser } from "./controller/user";
+import { routes as adRoutes } from "./route/ad";
+import { getUser } from "./route/user";
 import { createOrUpdateUser, User } from "./model/user";
 
 const jwtSecret = 'lol'
@@ -100,11 +100,7 @@ app.get('/', (req, rsp) => {
 /**
  * Jobs routes
  */
-app.get('/jobs/:id', getJob)
-app.get('/jobs', listJobs)
-app.post('/jobs', createJob)
-app.put('/jobs', updateJob)
-
+app.use(adRoutes)
 /**
  * User routes
  */

@@ -1,14 +1,18 @@
 import { DetailsComponent } from './details.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from "@angular/router";
+import { AdResolver } from "./details-resolver";
 
 
 const routing: ModuleWithProviders = RouterModule.forChild([
     {
-        path: 'job/:id',
+        path: 'ad/:id',
         component: DetailsComponent,
+        resolve: {
+            ad: AdResolver
+        }
         //canActivate: [NoAuthGuard],
     },
     /*{
@@ -23,6 +27,9 @@ const routing: ModuleWithProviders = RouterModule.forChild([
         CommonModule,
         SharedModule,
         routing,
+    ],
+    providers: [
+        AdResolver,
     ],
     declarations: [DetailsComponent]
 })

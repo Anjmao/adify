@@ -7,7 +7,7 @@ import { RouterModule } from "@angular/router";
 
 const routing: ModuleWithProviders = RouterModule.forChild([
     {
-        path: 'job/create',
+        path: 'ad/create',
         component: FormComponent,
         //canActivate: [NoAuthGuard],
     },

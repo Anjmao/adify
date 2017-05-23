@@ -1,12 +1,12 @@
 <div class="container" fxLayout="row" fxLayoutGap="10px">
-    <md-card class="job-card" *ngFor="let job of jobs">
+    <md-card class="ad-card" *ngFor="let ad of ads">
         <md-card-header>
-            <md-card-title><a routerLink="/job/{{job._id}}">{{job.title}}</a></md-card-title>
-            <md-card-subtitle>{{job._id}}</md-card-subtitle>
+            <md-card-title><a routerLink="/ad/{{ad._id}}">{{ad.title}}</a></md-card-title>
+            <md-card-subtitle>{{ad._id}}</md-card-subtitle>
         </md-card-header>
         <md-card-content>
             <p>
-                {{job.body}}
+                {{ad.body}}
             </p>
         </md-card-content>
     </md-card>

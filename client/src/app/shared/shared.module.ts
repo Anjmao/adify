@@ -1,4 +1,4 @@
-import { JobService } from './services/job.service';
+import { AdService } from './services/ad.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -28,7 +28,7 @@ import { MaterialModule } from "app/shared/material.module";
         AuthGuard,
         JwtService,
         UserService,
-        JobService,
+        AdService,
     ],
     exports: [
         CommonModule,

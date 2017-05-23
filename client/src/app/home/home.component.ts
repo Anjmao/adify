@@ -1,7 +1,7 @@
-import { JobService } from '../shared/services/job.service';
+import { AdService } from '../shared/services/ad.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { JobModel } from "../shared/models/job.model";
+import { AdModel } from "../shared/models/ad.model";
 
 
 @Component({
@@ -12,17 +12,16 @@ import { JobModel } from "../shared/models/job.model";
 export class HomeComponent implements OnInit {
     constructor(
         private router: Router,
-        private jobService: JobService,
+        private adService: AdService,
     ) { }
 
     isAuthenticated: boolean;
     tags: Array<string> = [];
     tagsLoaded: boolean = false;
 
-    jobs: JobModel[] = []
+    ads: AdModel[] = []
 
     ngOnInit() {
-        this.jobService.getJobs().subscribe(rsp => this.jobs = rsp.jobs)
+        this.adService.getAds().subscribe(rsp => this.ads = rsp.ads)
     }
-
 }

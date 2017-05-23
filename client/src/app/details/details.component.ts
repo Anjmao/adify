@@ -1,8 +1,8 @@
-import { JobModel } from 'app/shared/models/job.model';
+import { AdModel } from 'app/shared/models/ad.model';
 import { ApiService } from 'app/shared/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { JobService } from "app/shared/services/job.service";
+import { AdService } from "app/shared/services/ad.service";
 
 @Component({
     selector: 'app-details',
@@ -11,15 +11,16 @@ import { JobService } from "app/shared/services/job.service";
 })
 export class DetailsComponent implements OnInit {
 
-    job: JobModel;
+    ad: AdModel;
 
     constructor(
         private route: ActivatedRoute,
-        private jobService: JobService,
+        private adService: AdService,
     ) { }
 
     ngOnInit() {
-        this.jobService.getJob(this.route.snapshot.params['id']).subscribe(job => this.job = job)
+        this.route.data.subscribe(data => {
+            this.ad = data.ad;
+        });
     }
-
 }
