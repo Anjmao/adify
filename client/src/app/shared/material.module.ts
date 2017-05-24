@@ -1,4 +1,4 @@
-import { MdButtonModule, MdCheckboxModule, MdCardModule, MdToolbarModule, MdListModule, MdIconModule, MdInputModule } from '@angular/material';
+import { MdButtonModule, MdCheckboxModule, MdCardModule, MdToolbarModule, MdListModule, MdInputModule } from '@angular/material';
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -10,7 +10,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MdCardModule,
         MdToolbarModule,
         MdListModule,
-        MdIconModule,
         MdInputModule,
     ],
     exports: [
@@ -19,7 +18,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MdCardModule,
         MdToolbarModule,
         MdListModule,
-        MdIconModule,
         MdInputModule,
     ],
 })
