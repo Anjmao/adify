@@ -15,7 +15,7 @@ export class ApiService {
     ) { }
 
     private setHeaders(): Headers {
-        let headersConfig = {
+        const headersConfig = {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         };

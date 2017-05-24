@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
-import { AdModel } from "app/shared";
+import { AdModel } from 'app/shared';
 
 @Component({
     selector: 'app-form',
@@ -13,7 +13,7 @@ import { AdModel } from "app/shared";
 export class FormComponent implements OnInit {
     adForm: FormGroup;
     error: any;
-    updateMode = false;
+    ad: AdModel;
 
     constructor(
         private fb: FormBuilder,
@@ -30,8 +30,8 @@ export class FormComponent implements OnInit {
 
         this.route.data.subscribe(data => {
             if (data.ad) {
+                this.ad = data.ad;
                 this.adForm.patchValue(data.ad);
-                this.updateMode = true;
             }
         });
     }
@@ -43,7 +43,13 @@ export class FormComponent implements OnInit {
             return;
         }
 
-        this.saveAd(this.adForm.value).subscribe((rsp) => {
+        if (this.ad) {
+            Object.assign(this.ad, this.adForm.value);
+        } else {
+            this.ad = this.adForm.value;
+        }
+
+        this.saveAd(this.ad).subscribe((rsp) => {
             if (rsp.error) {
                 this.error = rsp.error;
             } else {
@@ -54,8 +60,8 @@ export class FormComponent implements OnInit {
 
     private saveAd(ad: AdModel): Observable<any> {
         if (ad._id) {
-            return this.adService.createAd(ad);
+            return this.adService.updateAd(ad);
         }
-        return this.adService.updateAd(ad);
+        return this.adService.createAd(ad);
     }
 }

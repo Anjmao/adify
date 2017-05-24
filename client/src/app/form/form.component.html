@@ -1,9 +1,9 @@
 <div class="container">
-    <h1 *ngIf="!updateMode">
-        Ad form
+    <h1 *ngIf="!ad">
+        Create ad
     </h1>
-    <h1 *ngIf="updateMode">
-        Edit ad
+    <h1 *ngIf="ad">
+        Update ad {{ad.title}}
     </h1>
 
 
