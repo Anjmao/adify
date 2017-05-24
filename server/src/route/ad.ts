@@ -1,19 +1,19 @@
 import { Request, Response, Router } from 'express'
-import { AdModel, Ad } from "../model/ad";
+import { AdModel, Ad } from '../model/ad';
 
 export interface ListAdsResponse {
     ads: AdModel[]
 }
 
-export const routes = Router();
-routes.get('/ads', listAds);
-routes.get('/ads/:id', getAd);
-routes.post('/ads', createAd);
-routes.put('/ads', updateAd);
+export const route = Router();
+route.get('/ads', listAds);
+route.get('/ads/:id', getAd);
+route.post('/ads', createAd);
+route.put('/ads', updateAd);
 
 function listAds(req: Request, rsp: Response) {
     Ad.find().then(ads => {
-        let result: ListAdsResponse = {
+        const result: ListAdsResponse = {
             ads: ads
         };
         rsp.json(result);
@@ -38,7 +38,7 @@ function getAd(req: Request, rsp: Response) {
 }
 
 function createAd(req: Request, rsp: Response) {
-    let ad = new Ad(req.body);
+    const ad = new Ad(req.body);
     ad.save((err, savedAd) => {
         if (err) {
             rsp.status(400);
@@ -50,7 +50,7 @@ function createAd(req: Request, rsp: Response) {
 }
 
 function updateAd(req: Request, rsp: Response) {
-    let adBody = <AdModel>req.body
+    const adBody = <AdModel>req.body
     Ad.findById(adBody._id, (err, ad) => {
         if (err) {
             return rsp.json(err);
@@ -58,10 +58,10 @@ function updateAd(req: Request, rsp: Response) {
 
         ad.title = adBody.title;
         ad.body = adBody.body;
-        ad.save((err, savedJob) => {
-            if (err) {
+        ad.save((err2, savedJob) => {
+            if (err2) {
                 rsp.status(400);
-                rsp.json(err.errors);
+                rsp.json(err2.errors);
             } else {
                 rsp.json(savedJob);
             }

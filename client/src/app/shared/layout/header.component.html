@@ -17,7 +17,7 @@
         <ul *showAuthed="true">
             <li>
                 <a md-button [routerLink]="['/profile', currentUser.uniqueId]" routerLinkActive="active">
-            <img [src]="currentUser.image" *ngIf="currentUser.image" class="user-pic" />
+            <img [src]="currentUser.photo" *ngIf="currentUser.photo" class="user-photo" />
             Welcome <b>{{ currentUser.displayName }}</b>
             </a>
             </li>

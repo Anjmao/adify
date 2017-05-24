@@ -1,51 +1,61 @@
-import { Document, Schema, model } from "mongoose";
-
-type UserLoginProvider = 'facebook' | 'linkedin' | 'google'
+import { Document, Schema, model } from 'mongoose';
 
 export type UserModel = Document & {
-    uniqueId: string,
     displayName: string,
-    provider: UserLoginProvider,
+    email: string,
+    photo: string,
 };
 
 const userSchema = new Schema({
-    uniqueId: {
-        type: String,
-        unique: true,
-        required: true,
-    },
     displayName: {
         type: String,
         required: true,
     },
-    provider: {
+    email: {
         type: String,
         required: true,
     },
+    photo: {
+        type: String,
+    }
 }, { timestamps: true });
 
-export const User = model<UserModel>("User", userSchema);
+export const User = model<UserModel>('User', userSchema);
 
 export function createOrUpdateUser(profile: any): Promise<UserModel> {
     return new Promise((resolve, reject) => {
-        User.findOne({ uniqueId: profile.id }, (err, user) => {
+        if (!profile.emails || profile.emails.length === 0) {
+            reject('user should provide email address');
+            return;
+        }
+        const email = profile.emails[0].value;
+        let photo = null;
+        if (profile.photos && profile.photos.length > 0) {
+            photo = profile.photos[0].value
+        }
+        User.findOne({ email: email }, (err, user) => {
+            if (err) {
+                reject(err);
+                return;
+            }
             if (user) {
-                user.displayName = profile.displayName
+                user.displayName = profile.displayName;
+                user.photo = photo;
             } else {
                 user = new User({
-                    uniqueId: profile.id,
                     displayName: profile.displayName,
-                    provider: profile.provider,
-                })
+                    email: email,
+                    photo: photo,
+                });
             }
 
-            user.save((err, product) => {
-                if (err) {
-                    reject(err)
+            user.save((err2, product) => {
+                if (err2) {
+                    reject(err2);
                 } else {
-                    resolve(product)
+                    resolve(product);
                 }
-            })
-        })
-    })
+            });
+        });
+    });
 }

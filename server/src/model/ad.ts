@@ -1,4 +1,4 @@
-import { Document, Schema, model } from "mongoose";
+import { Document, Schema, model } from 'mongoose';
 
 export type AdModel = Document & {
     title: string,
@@ -15,4 +15,4 @@ const adSchema = new Schema({
     }
 }, { timestamps: true });
 
-export const Ad = model<AdModel>("Ad", adSchema);
+export const Ad = model<AdModel>('Ad', adSchema);

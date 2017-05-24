@@ -80,7 +80,7 @@ export class UserService {
     }
 
     logout(): Observable<any> {
-        return this.apiService.get('/logout').map(() => this.purgeAuth())
+        return this.apiService.get('/user/logout').map(() => this.purgeAuth())
     }
 
 }
