@@ -1,7 +1,7 @@
 import { ApiService } from './';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable'
-import { AdModel, ListAdsResponse } from "app/shared/models/ad.model";
+import { AdModel, ListAdsResponse } from 'app/shared/models/ad.model';
 
 @Injectable()
 export class AdService {
@@ -16,7 +16,11 @@ export class AdService {
         return this.apiService.get(`/ads/${id}`);
     }
 
-    createAd(job: AdModel): Observable<any> {
-        return this.apiService.post('/ads', job);
+    createAd(ad: AdModel): Observable<any> {
+        return this.apiService.post('/ads', ad);
+    }
+
+    updateAd(ad: AdModel): Observable<any> {
+        return this.apiService.put('/ads', ad);
     }
 }

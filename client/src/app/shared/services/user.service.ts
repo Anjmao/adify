@@ -38,7 +38,6 @@ export class UserService {
     }
 
     setAuth(user: UserModel) {
-        //this.jwtService.saveToken(user.token);
         this.currentUserSubject.next(user);
         this.isAuthenticatedSubject.next(true);
     }
@@ -54,7 +53,7 @@ export class UserService {
     }
 
     attemptAuth(type, credentials): Observable<UserModel> {
-        let route = (type === 'login') ? '/login' : '';
+        const route = (type === 'login') ? '/login' : '';
         return this.apiService.post('/users' + route, { user: credentials })
             .map(
             data => {
@@ -82,5 +81,4 @@ export class UserService {
     logout(): Observable<any> {
         return this.apiService.get('/user/logout').map(() => this.purgeAuth())
     }
-
 }

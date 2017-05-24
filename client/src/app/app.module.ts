@@ -12,8 +12,8 @@ import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
-import { SharedModule } from "./shared";
-import { RouterModule } from "@angular/router";
+import { SharedModule } from './shared';
+import { RouterModule } from '@angular/router';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 

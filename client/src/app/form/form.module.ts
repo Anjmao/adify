@@ -1,21 +1,26 @@
 import { FormComponent } from './form.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from 'app/shared/shared.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
+import { RouterModule } from '@angular/router';
+import { AuthGuard } from 'app/shared';
+import { FormAdResolver } from 'app/form/form-ad-resolver';
 
 
 const routing: ModuleWithProviders = RouterModule.forChild([
     {
         path: 'ad/create',
         component: FormComponent,
-        //canActivate: [NoAuthGuard],
+        canActivate: [AuthGuard],
     },
-    /*{
-        path: 'adform/:id',
-        component: AdformComponent,
-        //canActivate: [NoAuthGuard],
-    }*/
+    {
+        path: 'ad/:id/edit',
+        component: FormComponent,
+        canActivate: [AuthGuard],
+        resolve: {
+            ad: FormAdResolver
+        }
+    }
 ])
 
 @NgModule({
@@ -23,6 +28,9 @@ const routing: ModuleWithProviders = RouterModule.forChild([
         CommonModule,
         SharedModule,
         routing,
+    ],
+    providers: [
+        FormAdResolver,
     ],
     declarations: [FormComponent]
 })

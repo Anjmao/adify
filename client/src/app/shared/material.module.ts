@@ -1,4 +1,12 @@
-import { MdButtonModule, MdCheckboxModule, MdCardModule, MdToolbarModule, MdListModule, MdInputModule } from '@angular/material';
+import {
+    MdButtonModule,
+    MdCheckboxModule,
+    MdCardModule,
+    MdToolbarModule,
+    MdListModule,
+    MdInputModule,
+    MdMenuModule,
+} from '@angular/material';
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -11,6 +19,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MdToolbarModule,
         MdListModule,
         MdInputModule,
+        MdMenuModule,
     ],
     exports: [
         MdButtonModule,
@@ -19,6 +28,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         MdToolbarModule,
         MdListModule,
         MdInputModule,
+        MdMenuModule,
     ],
 })
 export class MaterialModule { }

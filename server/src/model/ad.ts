@@ -8,6 +8,7 @@ export type AdModel = Document & {
 const adSchema = new Schema({
     title: {
         type: String,
+        required: true,
     },
     body: {
         type: String,

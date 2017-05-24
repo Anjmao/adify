@@ -2,7 +2,7 @@ import { AdModel } from 'app/shared/models/ad.model';
 import { ApiService } from 'app/shared/services';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router'
-import { AdService } from "app/shared/services/ad.service";
+import { AdService } from 'app/shared/services/ad.service';
 
 @Component({
     selector: 'app-details',

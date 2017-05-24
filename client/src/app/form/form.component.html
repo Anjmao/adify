@@ -1,23 +1,28 @@
 <div class="container">
-    <h1>
+    <h1 *ngIf="!updateMode">
         Ad form
     </h1>
+    <h1 *ngIf="updateMode">
+        Edit ad
+    </h1>
+
 
     <md-card class="ad-form-card">
         <form [formGroup]="adForm">
 
             <md-input-container>
                 <input mdInput formControlName="title" placeholder="Title">
+                <md-error>Title is required</md-error>
             </md-input-container>
 
             <md-input-container>
                 <textarea mdInput formControlName="body" placeholder="Body"></textarea>
+                <md-error>Body is required</md-error>
             </md-input-container>
-
-            <div>
-                <button md-raised-button color="primary" (click)="saveForm()">Save</button>
-            </div>
         </form>
+        <md-card-actions>
+            <button md-raised-button color="accent" (click)="saveForm()">Save</button>
+        </md-card-actions>
     </md-card>
 
 </div>

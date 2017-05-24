@@ -2,8 +2,8 @@ import { DetailsComponent } from './details.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from "@angular/router";
-import { AdResolver } from "./details-resolver";
+import { RouterModule } from '@angular/router';
+import { AdResolver } from './details-resolver';
 
 
 const routing: ModuleWithProviders = RouterModule.forChild([
@@ -13,7 +13,6 @@ const routing: ModuleWithProviders = RouterModule.forChild([
         resolve: {
             ad: AdResolver
         }
-        //canActivate: [NoAuthGuard],
     },
     /*{
         path: 'adform/:id',

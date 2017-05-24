@@ -1,4 +1,5 @@
-export type AdModel = Document & {
+export interface AdModel {
+    _id: string,
     title: string,
     body: string,
 };

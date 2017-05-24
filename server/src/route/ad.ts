@@ -42,7 +42,7 @@ function createAd(req: Request, rsp: Response) {
     ad.save((err, savedAd) => {
         if (err) {
             rsp.status(400);
-            rsp.json(err.errors);
+            rsp.json({ error: err.errors });
         } else {
             rsp.json(savedAd);
         }
@@ -54,6 +54,11 @@ function updateAd(req: Request, rsp: Response) {
     Ad.findById(adBody._id, (err, ad) => {
         if (err) {
             return rsp.json(err);
+        }
+
+        if (!ad) {
+            rsp.status(404);
+            return rsp.json({ error: `ad ${adBody._id} not found` });
         }
 
         ad.title = adBody.title;

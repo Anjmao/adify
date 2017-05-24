@@ -6,25 +6,23 @@
         <!-- Show this for logged out users -->
         <ul *showAuthed="false">
             <li>
-                <a md-button class="nav-link" routerLink="/login" routerLinkActive="active">Sign in</a>
-            </li>
-            <li>
-                <a md-button class="nav-link" routerLink="/ad/create" routerLinkActive="active">New Ad</a>
+                <a md-button class="nav-link" routerLink="/login" routerLinkActive="active">Log In</a>
             </li>
         </ul>
 
-        <!-- Show this for logged in users -->
-        <ul *showAuthed="true">
-            <li>
-                <a md-button [routerLink]="['/profile', currentUser.uniqueId]" routerLinkActive="active">
-            <img [src]="currentUser.photo" *ngIf="currentUser.photo" class="user-photo" />
-            <b>{{ currentUser.displayName }}</b>
+        <div *showAuthed="true">
+            <a md-button class="nav-link" routerLink="/ad/create" routerLinkActive="active">
+                <i class="fa fa-plus" aria-hidden="true"></i> New Ad
             </a>
-            </li>
 
-            <li>
-                <a md-button href="#" (click)="logout()">Logout</a>
-            </li>
-        </ul>
+            <md-menu #appMenu="mdMenu">
+                <button md-menu-item (click)="logout()"><i class="fa fa-sign-out"></i> Log Out</button>
+            </md-menu>
+
+            <button md-button [mdMenuTriggerFor]="appMenu">
+                <img [src]="currentUser.photo" *ngIf="currentUser.photo" class="user-photo" /> {{ currentUser.displayName }}
+            </button>
+
+        </div>
     </div>
 </md-toolbar>
