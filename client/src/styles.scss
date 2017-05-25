@@ -13,7 +13,7 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue.
-$app-primary: mat-palette($mat-blue, 800, 100, 800);
+$app-primary: mat-palette($mat-blue, 700, 100, 700);
 $app-accent:  mat-palette($mat-teal);
 
 // The warn palette is optional (defaults to red).
@@ -32,7 +32,7 @@ html, body {
     height:100%;
     min-height:100vh;
     margin: 0;
-    font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+    font-family: Roboto,Helvetica Neue,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
     background-color: #e9ebee;
@@ -48,6 +48,10 @@ a:hover {
     text-decoration: underline;
 }
 
+h1, h2, h3 {
+    font-weight: 400;
+}
+
 footer {
     display : flex;
     height : 50px;
@@ -57,11 +61,6 @@ footer {
 .container {
     max-width: 1128px;
     margin: auto;
-}
-
-.box {
-    background: #555;
-    color: #FFF
 }
 
 .sub-menu {
@@ -76,7 +75,7 @@ footer {
 
 .main-toolbar {
     margin-bottom: 20px;
-    min-height: 44px !important;
+    min-height: 50px !important;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
 
     .logo {
@@ -87,8 +86,8 @@ footer {
 
     .mat-toolbar-row {
         max-width: 1128px;
-        min-height: 44px !important;
-        max-height: 44px !important;
+        min-height: 50px !important;
+        max-height: 50px !important;
         margin: auto;
     }
 

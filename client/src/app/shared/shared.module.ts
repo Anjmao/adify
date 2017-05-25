@@ -4,11 +4,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
-import { ApiService, AuthGuard, JwtService, UserService } from "app/shared";
-import { MaterialModule } from "app/shared/material.module";
+import { ApiService, AuthGuard, JwtService, UserService } from 'app/shared';
+import { MaterialModule } from 'app/shared/material.module';
 
 @NgModule({
     imports: [
@@ -18,6 +18,7 @@ import { MaterialModule } from "app/shared/material.module";
         HttpModule,
         RouterModule,
         MaterialModule,
+        FlexLayoutModule,
     ],
     declarations: [
         ListErrorsComponent,
@@ -39,6 +40,7 @@ import { MaterialModule } from "app/shared/material.module";
         RouterModule,
         ShowAuthedDirective,
         MaterialModule,
+        FlexLayoutModule,
     ]
 })
 export class SharedModule { }

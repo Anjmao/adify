@@ -1,5 +1,6 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MdChipsModule, MdGridListModule } from '@angular/material';
 
 import { HomeComponent } from './home.component';
 import { HomeAuthResolver } from './home-auth-resolver.service';
@@ -19,6 +20,8 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
     imports: [
         homeRouting,
         SharedModule,
+        MdChipsModule,
+        MdGridListModule,
     ],
     declarations: [
         HomeComponent

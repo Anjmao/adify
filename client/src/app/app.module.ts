@@ -9,7 +9,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
@@ -30,7 +29,6 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
         BrowserModule,
         FormsModule,
         HttpModule,
-        FlexLayoutModule,
         SharedModule,
         FormModule,
         DetailsModule,

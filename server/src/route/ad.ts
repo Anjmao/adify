@@ -12,7 +12,7 @@ route.post('/ads', createAd);
 route.put('/ads', updateAd);
 
 function listAds(req: Request, rsp: Response) {
-    Ad.find().then(ads => {
+    Ad.find().select('title').then(ads => {
         const result: ListAdsResponse = {
             ads: ads
         };

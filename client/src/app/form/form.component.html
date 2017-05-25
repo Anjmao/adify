@@ -6,7 +6,6 @@
         Update ad {{ad.title}}
     </h1>
 
-
     <md-card class="ad-form-card">
         <form [formGroup]="adForm">
 
@@ -16,7 +15,7 @@
             </md-input-container>
 
             <md-input-container>
-                <textarea mdInput formControlName="body" placeholder="Body"></textarea>
+                <textarea class="body-input" mdInput formControlName="body" placeholder="Body"></textarea>
                 <md-error>Body is required</md-error>
             </md-input-container>
         </form>

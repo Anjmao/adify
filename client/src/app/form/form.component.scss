@@ -1,5 +1,4 @@
 .ad-form-card {
-    width: 600px;
 
     .mat-input-container {
         width: 100%;
@@ -8,4 +7,8 @@
     .mat-card-actions {
         margin: 15px 0 0 0;
     }
+}
+
+.body-input {
+    min-height: 200px;
 }
