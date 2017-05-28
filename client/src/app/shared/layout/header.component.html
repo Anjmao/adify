@@ -1,28 +1,27 @@
-<md-toolbar color="primary" class="main-toolbar">
-    <div>
-        <a class="logo" routerLink="/">Title</a>
-    </div>
-    <div class="toolbar-menu">
-        <!-- Show this for logged out users -->
-        <ul *showAuthed="false">
-            <li>
-                <a md-button class="nav-link" routerLink="/login" routerLinkActive="active">Log In</a>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+        aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    <a class="navbar-brand" href="#">Title</a>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item" *showAuthed="false">
+                <a class="nav-link" routerLink="/login">Log In</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link disabled" href="#">Disabled</a>
             </li>
         </ul>
-
-        <div *showAuthed="true">
+        <div *showAuthed="true" class="mt-2 mt-md-0">
             <a md-button class="nav-link" routerLink="/ad/create" routerLinkActive="active">
                 <i class="fa fa-plus" aria-hidden="true"></i> New Ad
             </a>
-
-            <md-menu #appMenu="mdMenu">
-                <button md-menu-item (click)="logout()"><i class="fa fa-sign-out"></i> Log Out</button>
-            </md-menu>
-
-            <button md-button [mdMenuTriggerFor]="appMenu">
-                <img [src]="currentUser.photo" *ngIf="currentUser.photo" class="user-photo" /> {{ currentUser.displayName }}
-            </button>
-
+            <img [src]="currentUser.photo" *ngIf="currentUser.photo" class="user-photo" /> {{ currentUser.displayName }}
         </div>
     </div>
-</md-toolbar>
+</nav>
