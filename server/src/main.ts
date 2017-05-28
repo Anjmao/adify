@@ -9,6 +9,7 @@ import { route as userRoutes } from './route/user';
 import { createOrUpdateUser, User } from './model/user';
 import { initializePassport } from './passport';
 import { config } from './config';
+import { Ad } from "./model/ad";
 
 /**
  * Connect to MongoDB.
@@ -20,6 +21,8 @@ mongoose.connection.on('error', () => {
     console.log('MongoDB connection error. Please make sure MongoDB is running.');
     process.exit();
 });
+
+Ad.ensureIndexes();
 
 /**
  * Initialize express
