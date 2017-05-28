@@ -1,3 +1,4 @@
+import { log } from 'util';
 import { Request, Response, Router } from 'express'
 import { AdModel, Ad } from '../model/ad';
 
@@ -6,13 +7,22 @@ export interface ListAdsResponse {
 }
 
 export const route = Router();
-route.get('/ads', listAds);
+route.get('/ads', queryAds);
 route.get('/ads/:id', getAd);
 route.post('/ads', createAd);
 route.put('/ads', updateAd);
 
-function listAds(req: Request, rsp: Response) {
-    Ad.find().select('title').then(ads => {
+function queryAds(req: Request, rsp: Response) {
+    let query: any = {};
+    const search = req.query['search'];
+    console.log(search)
+    if (search) {
+        query = {
+            $text: { $search: search },
+            //            score: { $meta: "textScore" }
+        }
+    };
+    Ad.find(query).select('title body').then(ads => {
         const result: ListAdsResponse = {
             ads: ads
         };

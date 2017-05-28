@@ -16,4 +16,6 @@ const adSchema = new Schema({
     }
 }, { timestamps: true });
 
+adSchema.index({ body: 'text', title: 'text' });
+
 export const Ad = model<AdModel>('Ad', adSchema);

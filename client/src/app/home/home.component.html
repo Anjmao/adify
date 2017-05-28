@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-9 mx-auto">
-            <ads-list [ads]="ads"></ads-list>
+            <ads-list (onSearch)="search($event)" [ads]="ads"></ads-list>
         </div>
     </div>
 </div>

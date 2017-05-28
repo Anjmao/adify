@@ -3,7 +3,7 @@
         <form>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-search" aria-hidden="true"></i></span>
-                <input type="text" class="form-control" placeholder="Search for...">
+                <input type="text" (keyup)="search($event)" class="form-control" placeholder="Search for...">
             </div>
         </form>
     </div>
@@ -14,7 +14,7 @@
                 <h5 class="mt-0 mb-1">
                     <a routerLink="/ad/{{ad._id}}">{{ad.title}}</a>
                 </h5>
-                Vilnius
+                {{ad.body}}
             </div>
         </li>
     </ul>

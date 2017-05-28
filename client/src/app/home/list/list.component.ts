@@ -1,5 +1,5 @@
 import { AdModel } from 'app/shared/models';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'ads-list',
@@ -9,10 +9,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ListComponent implements OnInit {
 
     @Input() ads: AdModel[]
+    @Output('onSearch') onSearch = new EventEmitter();
 
     constructor() { }
 
     ngOnInit() {
+    }
+
+    search($event) {
+        this.onSearch.emit($event.target.value)
     }
 
 }

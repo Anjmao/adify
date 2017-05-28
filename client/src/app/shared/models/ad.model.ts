@@ -7,3 +7,7 @@ export interface AdModel {
 export interface ListAdsResponse {
     ads: AdModel[]
 };
+
+export interface ListAdsRequest {
+    search?: string
+};
