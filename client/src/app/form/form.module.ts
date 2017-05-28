@@ -1,3 +1,4 @@
+import { NgbFormControlValidation } from '../shared/ngb-validation.directive';
 import { FormComponent } from './form.component';
 import { SharedModule } from 'app/shared/shared.module';
 import { NgModule, ModuleWithProviders } from '@angular/core';
@@ -32,6 +33,6 @@ const routing: ModuleWithProviders = RouterModule.forChild([
     providers: [
         FormAdResolver,
     ],
-    declarations: [FormComponent]
+    declarations: [FormComponent, NgbFormControlValidation]
 })
 export class FormModule { }

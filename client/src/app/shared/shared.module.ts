@@ -1,3 +1,4 @@
+import { NgbFormControlValidation } from './ngb-validation.directive';
 import { AdService } from './services/ad.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
@@ -8,7 +9,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ListErrorsComponent } from './list-errors.component';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { ApiService, AuthGuard, JwtService, UserService } from 'app/shared';
-import { MaterialModule } from 'app/shared/material.module';
 
 @NgModule({
     imports: [
@@ -17,12 +17,10 @@ import { MaterialModule } from 'app/shared/material.module';
         ReactiveFormsModule,
         HttpModule,
         RouterModule,
-        MaterialModule,
         FlexLayoutModule,
     ],
     declarations: [
-        ListErrorsComponent,
-        ShowAuthedDirective
+        ShowAuthedDirective,
     ],
     providers: [
         ApiService,
@@ -36,10 +34,8 @@ import { MaterialModule } from 'app/shared/material.module';
         FormsModule,
         ReactiveFormsModule,
         HttpModule,
-        ListErrorsComponent,
         RouterModule,
         ShowAuthedDirective,
-        MaterialModule,
         FlexLayoutModule,
     ]
 })

@@ -1,27 +1,27 @@
 <div class="container">
-    <h1 *ngIf="!ad">
-        Create ad
-    </h1>
-    <h1 *ngIf="ad">
-        Update ad {{ad.title}}
-    </h1>
-
-    <md-card class="ad-form-card">
-        <form [formGroup]="adForm">
-
-            <md-input-container>
-                <input mdInput formControlName="title" placeholder="Title">
-                <md-error>Title is required</md-error>
-            </md-input-container>
-
-            <md-input-container>
-                <textarea class="body-input" mdInput formControlName="body" placeholder="Body"></textarea>
-                <md-error>Body is required</md-error>
-            </md-input-container>
-        </form>
-        <md-card-actions>
-            <button md-raised-button color="accent" (click)="saveForm()">Save</button>
-        </md-card-actions>
-    </md-card>
-
+    <div class="card mx-auto w-75 ad-card">
+        <div class="card-header">
+            <span *ngIf="!ad">
+                Create ad
+            </span>
+            <span *ngIf="ad">
+                Update ad {{ad.title}}
+            </span>
+        </div>
+        <div class="card-block">
+            <form [formGroup]="adForm">
+                <div class="form-group">
+                    <label class="form-control-label" for="title">Title</label>
+                    <input type="text" class="form-control" formControlName="title" id="title" placeholder="Enter Ad title">
+                    <div *ngIf="adForm.controls.title.invalid && adForm.controls.title.touched" class="form-control-feedback">Title is required</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="body">Body</label>
+                    <textarea class="form-control" formControlName="body" id="body" placeholder="Enter Ad Body"></textarea>
+                    <div *ngIf="adForm.controls.body.invalid && adForm.controls.body.touched" class="form-control-feedback">Body is required</div>
+                </div>
+                <button class="btn btn-success" (click)="saveForm()">Save</button>
+            </form>
+        </div>
+    </div>
 </div>
