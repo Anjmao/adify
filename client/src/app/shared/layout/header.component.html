@@ -15,7 +15,7 @@
             </li>
             <li class="nav-item" routerLinkActive="active">
                 <a class="nav-link" routerLink="/ad/create">
-                    <i class="fa fa-plus" aria-hidden="true"></i> New Ad
+                    New Ad
                  </a>
             </li>
         </ul>
@@ -25,9 +25,10 @@
                     <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">
                         <img [src]="currentUser.photo" *ngIf="currentUser.photo" class="user-photo" /> Me
                     </a>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu dropdown-menu-right">
                         <a class="dropdown-item" href="#">Action</a>
                         <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" (click)="logout()">Log Out</a>
                     </div>
                 </li>
