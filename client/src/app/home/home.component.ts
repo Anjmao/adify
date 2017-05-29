@@ -27,6 +27,14 @@ export class HomeComponent implements OnInit {
         this.loadAds();
     }
 
+    deleteAd(ad: AdModel) {
+        if (confirm('Are you sure?')) {
+            this.adService.deleteAd(ad._id).subscribe(() => {
+                this.loadAds();
+            });
+        }
+    }
+
     private loadAds() {
         this.adService.getAds(this.filter).subscribe(rsp => this.ads = rsp.ads)
     }

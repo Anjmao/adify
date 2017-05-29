@@ -7,7 +7,7 @@ import { route as adRoutes } from './route/ad';
 import { route as authRoutes } from './route/auth';
 import { route as userRoutes } from './route/user';
 import { createOrUpdateUser, User } from './model/user';
-import { initializePassport } from './passport';
+import { initializePassport, secureRoute } from './passport';
 import { config } from './config';
 import { Ad } from "./model/ad";
 
@@ -33,7 +33,7 @@ app.use(initializePassport());
 app.use(cors());
 
 app.get('/', (req, rsp) => {
-    rsp.json({ status: 'ok' });
+    rsp.json({ status: 'ok', user: req['user'] });
 })
 
 /**

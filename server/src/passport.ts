@@ -1,5 +1,5 @@
 import { config } from './config';
-import { createOrUpdateUser } from './model/user';
+import { createOrUpdateUser, UserModel } from './model/user';
 import { RequestHandler } from 'express';
 const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
@@ -7,7 +7,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const jwt = require('jwt-simple');
+const jwt = require('jsonwebtoken');
 
 export function secureRoute(method = 'jwt'): RequestHandler {
     return passport.authenticate(method, { session: false });
@@ -20,7 +20,7 @@ export function initializePassport(): RequestHandler {
     const opts: any = {}
     opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
     opts.secretOrKey = config.jwtSecret;
-    opts.expiresIn = 2
+    opts.expiresIn = "14d"
     // opts.issuer = 'locahost:8000';
     // opts.audience = 'localhost:4200';
     passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
@@ -41,7 +41,7 @@ export function initializePassport(): RequestHandler {
         (token, tokenSecret, profile, done) => {
             console.log('linkedin', profile);
             createOrUpdateUser(profile).then((user) => {
-                (<any>user)._token = jwt.encode(user, config.jwtSecret)
+                (<any>user)._token = signToken(user)
                 done(null, user)
             }).catch((err) => {
                 console.log(err)
@@ -62,7 +62,7 @@ export function initializePassport(): RequestHandler {
         (token, refreshToken, profile, done) => {
             console.log('facebook', profile);
             createOrUpdateUser(profile).then((user) => {
-                (<any>user)._token = jwt.encode(user, config.jwtSecret)
+                (<any>user)._token = signToken(user)
                 done(null, user)
             }).catch((err) => {
                 console.log(err)
@@ -83,7 +83,7 @@ export function initializePassport(): RequestHandler {
         (token, refreshToken, profile, done) => {
             console.log('google', profile);
             createOrUpdateUser(profile).then((user) => {
-                (<any>user)._token = jwt.encode(user, config.jwtSecret)
+                (<any>user)._token = signToken(user)
                 done(null, user)
             }).catch((err) => {
                 console.log(err)
@@ -105,4 +105,6 @@ export function initializePassport(): RequestHandler {
     return passport.initialize();
 }
 
-
+function signToken(user: UserModel): string {
+    return jwt.sign({ id: user._id, email: user.email }, config.jwtSecret);
+}

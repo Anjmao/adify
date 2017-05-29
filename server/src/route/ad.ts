@@ -1,40 +1,44 @@
 import { log } from 'util';
 import { Request, Response, Router } from 'express'
 import { AdModel, Ad } from '../model/ad';
+import { AppRequest } from "../model/request";
+import { secureRoute } from "../passport";
 
 export interface ListAdsResponse {
-    ads: AdModel[]
+    ads: AdModel[],
 }
 
 export const route = Router();
 route.get('/ads', queryAds);
 route.get('/ads/:id', getAd);
-route.post('/ads', createAd);
-route.put('/ads', updateAd);
+route.post('/ads', secureRoute(), createAd);
+route.put('/ads', secureRoute(), updateAd);
+route.delete('/ads/:id', secureRoute(), deleteAd);
 
 function queryAds(req: Request, rsp: Response) {
     let query: any = {};
     const search = req.query['search'];
-    console.log(search)
     if (search) {
         query = {
             $text: { $search: search },
-            //            score: { $meta: "textScore" }
         }
     };
-    Ad.find(query).select('title body').then(ads => {
-        const result: ListAdsResponse = {
-            ads: ads
-        };
-        rsp.json(result);
-    }).catch(err => {
-        rsp.json({ error: err });
-    });
+    Ad.find(query, { score: { $meta: "textScore" } })
+        .sort({ score: { $meta: 'textScore' } })
+        .then(ads => {
+            const result: ListAdsResponse = {
+                ads: ads
+            };
+            rsp.json(result);
+        }).catch(err => {
+            rsp.json({ error: err });
+        });
 }
 
 function getAd(req: Request, rsp: Response) {
     Ad.findById(req.params['id'], (err, ad) => {
         if (err) {
+            rsp.status(500);
             return rsp.json(err);
         } else {
             if (ad) {
@@ -47,23 +51,33 @@ function getAd(req: Request, rsp: Response) {
     })
 }
 
-function createAd(req: Request, rsp: Response) {
+function createAd(req: AppRequest, rsp: Response) {
     const ad = new Ad(req.body);
+    const user = req.user;
+    ad.userId = user.id;
+    console.log('user', user)
     ad.save((err, savedAd) => {
         if (err) {
             rsp.status(400);
-            rsp.json({ error: err.errors });
+            rsp.json(formatErrors(err.errors));
         } else {
             rsp.json(savedAd);
         }
     })
 }
 
-function updateAd(req: Request, rsp: Response) {
-    const adBody = <AdModel>req.body
+function updateAd(req: AppRequest, rsp: Response) {
+    const adBody = <AdModel>req.body;
+    const user = req['user'];
     Ad.findById(adBody._id, (err, ad) => {
         if (err) {
-            return rsp.json(err);
+            rsp.status(400);
+            return rsp.json(formatErrors(err));
+        }
+
+        if (ad.userId !== user.id) {
+            rsp.status(400);
+            return rsp.json({ error: `user is not allowed to update ad ${ad._id}` });
         }
 
         if (!ad) {
@@ -72,14 +86,51 @@ function updateAd(req: Request, rsp: Response) {
         }
 
         ad.title = adBody.title;
-        ad.body = adBody.body;
+        ad.content = adBody.content;
         ad.save((err2, savedJob) => {
             if (err2) {
                 rsp.status(400);
-                rsp.json(err2.errors);
+                return rsp.json(formatErrors(err2.errors));
             } else {
-                rsp.json(savedJob);
+                return rsp.json(savedJob);
             }
         });
     });
+}
+
+function deleteAd(req: AppRequest, rsp: Response, next) {
+    const adId = req.params['id'];
+    const userId = req.user.id;
+    Ad.findById(adId, (err, ad) => {
+        if (err) {
+            rsp.status(500);
+            return rsp.json(err);
+        }
+
+        if (!ad) {
+            rsp.status(404);
+            return rsp.json({ error: `ad ${adId} not found` });
+        }
+
+        if (!ad.canModify(userId)) {
+            rsp.status(400);
+            return rsp.json({ error: `user ${userId} is not allowed to delete ad ${adId}` });
+        }
+
+        ad.remove((err, ok) => {
+            if (err) {
+                rsp.status(500);
+                return rsp.json({ error: err });
+            }
+            return rsp.sendStatus(200);
+        });
+    });
+}
+
+function formatErrors(errorsObject): any[] {
+    const errorsList = [];
+    for (let err in errorsObject) {
+        errorsList.push({ message: errorsObject[err].message })
+    }
+    return errorsList;
 }

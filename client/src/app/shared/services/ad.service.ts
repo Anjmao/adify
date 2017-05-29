@@ -29,4 +29,8 @@ export class AdService {
     updateAd(ad: AdModel): Observable<any> {
         return this.apiService.put('/ads', ad);
     }
+
+    deleteAd(id: string): Observable<any> {
+        return this.apiService.delete(`/ads/${id}`);
+    }
 }

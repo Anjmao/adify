@@ -1,7 +1,7 @@
 export interface AdModel {
     _id: string,
     title: string,
-    body: string,
+    content: string,
 };
 
 export interface ListAdsResponse {

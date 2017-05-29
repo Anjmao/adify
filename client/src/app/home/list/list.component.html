@@ -7,6 +7,9 @@
             </div>
         </form>
     </div>
+    <div *ngIf="ads.length === 0" class="card-block">
+        No records
+    </div>
     <ul class="list-unstyled list-group list-group-flush">
         <li class="list-group-item media" *ngFor="let ad of ads">
             <img class="d-flex mr-3 logo">
@@ -14,7 +17,12 @@
                 <h5 class="mt-0 mb-1">
                     <a routerLink="/ad/{{ad._id}}">{{ad.title}}</a>
                 </h5>
-                {{ad.body}}
+                {{ad.content}}
+                <div class="actions-list mt-2" *ngIf="ad.userId === userId">
+                    <a class="btn btn-sm btn-secondary" routerLink="/ad/{{ad._id}}/edit"><i class="fa fa-pencil"> Edit</i></a>
+                    <button class="btn btn-sm btn-secondary" (click)="deleteAd(ad)"><i class="fa fa-trash"> Delete</i></button>
+                </div>
+
             </div>
         </li>
     </ul>

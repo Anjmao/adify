@@ -12,7 +12,7 @@ import { AdModel } from 'app/shared';
 })
 export class FormComponent implements OnInit {
     adForm: FormGroup;
-    error: any;
+    errors: any;
     ad: AdModel;
 
     constructor(
@@ -25,7 +25,7 @@ export class FormComponent implements OnInit {
     ngOnInit() {
         this.adForm = this.fb.group({
             title: ['', Validators.required],
-            body: ['', Validators.required]
+            content: ['', Validators.required]
         })
 
         this.route.data.subscribe(data => {
@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
     saveForm() {
         if (!this.adForm.valid) {
             this.adForm.controls['title'].markAsTouched();
-            this.adForm.controls['body'].markAsTouched();
+            this.adForm.controls['content'].markAsTouched();
             return;
         }
 
@@ -50,12 +50,10 @@ export class FormComponent implements OnInit {
         }
 
         this.saveAd(this.ad).subscribe((rsp) => {
-            if (rsp.error) {
-                this.error = rsp.error;
-            } else {
-                this.router.navigateByUrl(`/ad/${rsp._id}`);
-            }
-        })
+            this.router.navigateByUrl(`/ad/${rsp._id}`);
+        }, (err) => {
+            this.errors = err;
+        });
     }
 
     private saveAd(ad: AdModel): Observable<any> {
