@@ -1,6 +1,8 @@
 # adify
 Open source ads engine allows to create real apps like estate, jobs, ads advertisement.
 
+Project status https://github.com/Anjmao/adify/projects/1
+
 ## Technologies
 * Angular 4 with Typescript
 * Angular CLI
