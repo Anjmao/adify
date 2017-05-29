@@ -4,16 +4,33 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { HomeAuthResolver } from './home-auth-resolver.service';
 import { SharedModule } from '../shared';
-import { ListComponent } from './list/list.component';
+import { AdsListComponent } from './list/list.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { TestComponent } from './test/test.component';
 
 const homeRouting: ModuleWithProviders = RouterModule.forChild([
     {
         path: '',
         component: HomeComponent,
         resolve: {
-            // isAuthenticated: HomeAuthResolver
-        }
-    }
+            isAuthenticated: HomeAuthResolver
+        },
+        children: [
+            {
+                path: '',
+                redirectTo: 'list',
+                pathMatch: 'full'
+            },
+            {
+                path: 'list',
+                component: AdsListComponent,
+            },
+            {
+                path: 'test',
+                component: TestComponent
+            }
+        ]
+    },
 ]);
 
 @NgModule({
@@ -23,7 +40,9 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
     ],
     declarations: [
         HomeComponent,
-        ListComponent
+        AdsListComponent,
+        UserMenuComponent,
+        TestComponent
     ],
     providers: [
         HomeAuthResolver

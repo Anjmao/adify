@@ -1,7 +1,9 @@
+import { ActivatedRoute } from '@angular/router';
+import { UserModel } from '../shared/models/user.model';
 import { AdService } from '../shared/services/ad.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { AdModel, ListAdsRequest } from '../shared/models/ad.model';
+import { UserService } from "app/shared";
 
 
 @Component({
@@ -10,32 +12,18 @@ import { AdModel, ListAdsRequest } from '../shared/models/ad.model';
     styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-    ads: AdModel[] = [];
-    filter: ListAdsRequest = {};
+
+    isAuthenticated = false;
 
     constructor(
-        private router: Router,
-        private adService: AdService,
-    ) { }
-
-    ngOnInit() {
-        this.loadAds();
+        route: ActivatedRoute,
+        userService: UserService,
+    ) {
+        userService.isAuthenticated.subscribe((val) => {
+            this.isAuthenticated = val;
+        });
     }
 
-    search(value: string) {
-        this.filter.search = value;
-        this.loadAds();
-    }
+    ngOnInit() { }
 
-    deleteAd(ad: AdModel) {
-        if (confirm('Are you sure?')) {
-            this.adService.deleteAd(ad._id).subscribe(() => {
-                this.loadAds();
-            });
-        }
-    }
-
-    private loadAds() {
-        this.adService.getAds(this.filter).subscribe(rsp => this.ads = rsp.ads)
-    }
 }

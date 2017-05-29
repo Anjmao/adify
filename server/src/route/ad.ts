@@ -2,27 +2,30 @@ import { log } from 'util';
 import { Request, Response, Router } from 'express'
 import { AdModel, Ad } from '../model/ad';
 import { AppRequest } from "../model/request";
-import { secureRoute } from "../passport";
+import { publicRoute, secureRoute } from '../passport';
 
 export interface ListAdsResponse {
     ads: AdModel[],
 }
 
 export const route = Router();
-route.get('/ads', queryAds);
+route.get('/ads', publicRoute(), queryAds);
 route.get('/ads/:id', getAd);
 route.post('/ads', secureRoute(), createAd);
 route.put('/ads', secureRoute(), updateAd);
 route.delete('/ads/:id', secureRoute(), deleteAd);
 
-function queryAds(req: Request, rsp: Response) {
+function queryAds(req: AppRequest, rsp: Response) {
     let query: any = {};
     const search = req.query['search'];
+    const cuser = req.query['cuser'];
     if (search) {
-        query = {
-            $text: { $search: search },
-        }
-    };
+        query.$text = { $search: search };
+    }
+    if (cuser) {
+        query.userId = req.user.id;
+    }
+    console.log(query);
     Ad.find(query, { score: { $meta: "textScore" } })
         .sort({ score: { $meta: 'textScore' } })
         .then(ads => {

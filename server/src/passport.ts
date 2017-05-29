@@ -1,6 +1,7 @@
 import { config } from './config';
 import { createOrUpdateUser, UserModel } from './model/user';
-import { RequestHandler } from 'express';
+import { RequestHandler, Request, Response, NextFunction } from 'express';
+import { AppRequest } from "./model/request";
 const passport = require('passport');
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
@@ -13,6 +14,26 @@ export function secureRoute(method = 'jwt'): RequestHandler {
     return passport.authenticate(method, { session: false });
 }
 
+/**
+ * Use to extract jwt auth token to access req.user in public routes
+ */
+export function publicRoute(): RequestHandler {
+    return (req: AppRequest, rsp: Response, next: NextFunction) => {
+        req.user = {};
+        if (req.headers.authorization) {
+            const token = req.headers.authorization.split(' ')[1];
+            jwt.verify(token, config.jwtSecret, (err, decoded) => {
+                if (!err) {
+                    req.user = { id: decoded.id, email: decoded.email };
+                }
+                next();
+            });
+        } else {
+            next();
+        }
+    }
+}
+
 export function initializePassport(): RequestHandler {
     /**
      * Setup JWT
@@ -21,10 +42,7 @@ export function initializePassport(): RequestHandler {
     opts.jwtFromRequest = ExtractJwt.fromAuthHeader();
     opts.secretOrKey = config.jwtSecret;
     opts.expiresIn = "14d"
-    // opts.issuer = 'locahost:8000';
-    // opts.audience = 'localhost:4200';
     passport.use(new JwtStrategy(opts, function (jwt_payload, done) {
-        console.log('jwt', jwt_payload)
         done(null, jwt_payload)
     }));
 

@@ -9,5 +9,6 @@ export interface ListAdsResponse {
 };
 
 export interface ListAdsRequest {
-    search?: string
+    search?: string;
+    cuser?: boolean;
 };
