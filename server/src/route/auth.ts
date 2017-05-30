@@ -7,7 +7,7 @@ export const route = Router();
 
 route.get('/auth/linkedin', passport.authenticate('linkedin', { session: false }));
 route.get('/auth/linkedin/callback',
-    passport.authenticate('linkedin', { failureRedirect: '/login' }),
+    passport.authenticate('linkedin', { failureRedirect: '/' }),
     redirectToComplete);
 
 route.get('/auth/facebook', passport.authenticate('facebook', { scope: ['email'], session: false }));

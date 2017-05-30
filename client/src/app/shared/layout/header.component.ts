@@ -24,6 +24,6 @@ export class HeaderComponent implements OnInit {
     }
 
     logout() {
-        this.userService.logout().subscribe()
+        this.userService.logout().subscribe();
     }
 }

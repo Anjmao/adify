@@ -25,7 +25,6 @@ function queryAds(req: AppRequest, rsp: Response) {
     if (cuser) {
         query.userId = req.user.id;
     }
-    console.log(query);
     Ad.find(query, { score: { $meta: "textScore" } })
         .sort({ score: { $meta: 'textScore' } })
         .then(ads => {

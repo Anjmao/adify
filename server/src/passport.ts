@@ -57,7 +57,6 @@ export function initializePassport(): RequestHandler {
         scope: ['r_emailaddress', 'r_basicprofile'],
     },
         (token, tokenSecret, profile, done) => {
-            console.log('linkedin', profile);
             createOrUpdateUser(profile).then((user) => {
                 (<any>user)._token = signToken(user)
                 done(null, user)
@@ -78,7 +77,6 @@ export function initializePassport(): RequestHandler {
         profileFields: ['id', 'displayName', 'email', 'photos']
     },
         (token, refreshToken, profile, done) => {
-            console.log('facebook', profile);
             createOrUpdateUser(profile).then((user) => {
                 (<any>user)._token = signToken(user)
                 done(null, user)
@@ -99,7 +97,6 @@ export function initializePassport(): RequestHandler {
         callbackURL: `${config.baseUrl}/auth/google/callback`
     },
         (token, refreshToken, profile, done) => {
-            console.log('google', profile);
             createOrUpdateUser(profile).then((user) => {
                 (<any>user)._token = signToken(user)
                 done(null, user)
@@ -111,12 +108,10 @@ export function initializePassport(): RequestHandler {
     ));
 
     passport.serializeUser((user, cb) => {
-        console.log('serialize user', user)
         cb(null, user);
     });
 
     passport.deserializeUser((obj, cb) => {
-        console.log('deserialize user', obj)
         cb(null, obj);
     });
 
