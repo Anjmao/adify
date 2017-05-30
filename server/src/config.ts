@@ -1,6 +1,5 @@
 export const config = {
     jwtSecret: 'gangam-style',
-    apiBaseUrl: 'http://localhost:8000',
-    uiBaseUrl: 'http://localhost:4200',
-    mongoConnectionString: 'mongodb://localhost:27017'
+    uiBaseUrl: process.env.UI_BASE_URL || 'http://localhost:4200',
+    mongoConnectionString: process.env.MONGO_DB || 'mongodb://admin:admin123@ds151461.mlab.com:51461/adify'
 };

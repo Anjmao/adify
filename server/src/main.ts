@@ -17,6 +17,7 @@ import { Ad } from "./model/ad";
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoConnectionString);
 
+console.log('env', process.env);
 mongoose.connection.on('error', () => {
     console.log('MongoDB connection error. Please make sure MongoDB is running.');
     process.exit();
@@ -44,7 +45,10 @@ app.use(adRoutes)
 app.use(userRoutes)
 
 
-app.listen(8000, () => {
-    console.log('server started on port 8000')
-})
+const server = app.listen(process.env.PORT || 8000, () => {
+    const port = server.address().port;
+    console.log(`App listening on port ${port}`);
+});
+
+module.exports = app;
 

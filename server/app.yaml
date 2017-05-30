@@ -1,2 +1,10 @@
+service: api
 runtime: nodejs
 env: flex
+env_variables:
+  MONGO_DB: 'mongodb://admin:admin123@ds151461.mlab.com:51461/adify'
+  UI_BASE_URL: 'https://adify-in-cloud.appspot.com'
+
+skip_files:
+- ^src$
+- ^tslint\.json

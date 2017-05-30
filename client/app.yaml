@@ -4,12 +4,11 @@ threadsafe: yes
 # [END runtime]
 
 handlers:
-
-- url: /(.+)
+- url: /(.*\.(gif|png|jpeg|jpg|css|js|ico))$
   static_files: dist/\1
   upload: dist/(.*)
 
-- url: /
+- url: /(.*)
   static_files: dist/index.html
   upload: dist/index.html
 
