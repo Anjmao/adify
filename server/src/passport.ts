@@ -51,9 +51,9 @@ export function initializePassport(): RequestHandler {
      * Setup Linkedin passport
      */
     passport.use(new LinkedInStrategy({
-        clientID: '86ssz1ba3pxqwe',
-        clientSecret: '3QzLmAOmZgmh5AhO',
-        callbackURL: 'http://localhost:8000/auth/linkedin/callback',
+        clientID: config.linkedin.clientID,
+        clientSecret: config.linkedin.clientSecret,
+        callbackURL: `${config.baseUrl}/auth/linkedin/callback`,
         scope: ['r_emailaddress', 'r_basicprofile'],
     },
         (token, tokenSecret, profile, done) => {
@@ -72,9 +72,9 @@ export function initializePassport(): RequestHandler {
      * Setup Facebook passport
      */
     passport.use(new FacebookStrategy({
-        clientID: '1208262602617328',
-        clientSecret: 'ea445901429395027822ec6d7a62250f',
-        callbackURL: 'http://localhost:8000/auth/facebook/callback',
+        clientID: config.facebook.clientID,
+        clientSecret: config.facebook.clientSecret,
+        callbackURL: `${config.baseUrl}/auth/facebook/callback`,
         profileFields: ['id', 'displayName', 'email', 'photos']
     },
         (token, refreshToken, profile, done) => {
@@ -94,9 +94,9 @@ export function initializePassport(): RequestHandler {
      */
 
     passport.use(new GoogleStrategy({
-        clientID: '428272099029-i07snjroc6ib1so1hgoj17it05do7cbb.apps.googleusercontent.com',
-        clientSecret: 'auds0fYeCI3JVvap4idXg-sa',
-        callbackURL: 'http://localhost:8000/auth/google/callback'
+        clientID: config.google.clientID,
+        clientSecret: config.google.clientSecret,
+        callbackURL: `${config.baseUrl}/auth/google/callback`
     },
         (token, refreshToken, profile, done) => {
             console.log('google', profile);

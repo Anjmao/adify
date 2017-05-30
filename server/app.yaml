@@ -3,7 +3,14 @@ runtime: nodejs
 env: flex
 env_variables:
   MONGO_DB: 'mongodb://admin:admin123@ds151461.mlab.com:51461/adify'
+  BASE_URL: 'https://api-dot-adify-in-cloud.appspot.com'
   UI_BASE_URL: 'https://adify-in-cloud.appspot.com'
+  FB_CLIENT_ID: '1208262602617328'
+  FB_CLIENT_SECRET: '3QzLmAOmZgmh5AhO'
+  GOO_CLIENT_ID: '428272099029-i07snjroc6ib1so1hgoj17it05do7cbb.apps.googleusercontent.com'
+  GOO_CLIENT_SECRET: 'auds0fYeCI3JVvap4idXg-sa'
+  IN_CLIENT_ID: '86ssz1ba3pxqwe'
+  IN_CLIENT_SECRET: '3QzLmAOmZgmh5AhO'
 
 skip_files:
 - ^src$
