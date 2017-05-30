@@ -17,7 +17,6 @@ import { Ad } from "./model/ad";
 mongoose.Promise = global.Promise;
 mongoose.connect(config.mongoConnectionString);
 
-console.log('env', process.env);
 mongoose.connection.on('error', () => {
     console.log('MongoDB connection error. Please make sure MongoDB is running.');
     process.exit();
