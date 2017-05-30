@@ -2,4 +2,6 @@
 export type UserModel = {
     _id: string;
     email: string;
+    displayName: string;
+    photo?: string;
 }
