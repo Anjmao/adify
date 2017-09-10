@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
-        <div class="col-12 col-md-3" *ngIf="isAuthenticated">
-            <user-menu></user-menu>
+        <div class="col-12 col-md-3">
+            <app-filter [cities]="cities"></app-filter>
         </div>
         <div class="col-12 col-md-9" [ngClass]="{'mx-auto': !isAuthenticated}">
             <router-outlet></router-outlet>

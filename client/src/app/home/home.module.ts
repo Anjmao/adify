@@ -7,6 +7,9 @@ import { SharedModule } from '../shared';
 import { AdsListComponent } from './list/list.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { TestComponent } from './test/test.component';
+import { FilterComponent } from './filter/filter.component';
+import { FilterService } from './filter.service';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const homeRouting: ModuleWithProviders = RouterModule.forChild([
     {
@@ -32,15 +35,19 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
     imports: [
         homeRouting,
         SharedModule,
+        NgSelectModule
     ],
     declarations: [
         HomeComponent,
         AdsListComponent,
         UserMenuComponent,
-        TestComponent
+        TestComponent,
+        FilterComponent
     ],
     providers: [
-        HomeAuthResolver
+        HomeAuthResolver,
+        FilterService
     ]
 })
-export class HomeModule { }
+export class HomeModule {
+}

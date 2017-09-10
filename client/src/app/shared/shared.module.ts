@@ -1,5 +1,4 @@
-import { NgbFormControlValidation } from './ngb-validation.directive';
-import { AdService } from './services/ad.service';
+import { AdService, MockAdService } from './services/ad.service';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -7,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ShowAuthedDirective } from './show-authed.directive';
-import { ApiService, AuthGuard, JwtService, UserService } from 'app/shared';
+import { ApiService, AuthGuard, JwtService, UserService } from './services';
 
 @NgModule({
     imports: [
@@ -16,17 +15,17 @@ import { ApiService, AuthGuard, JwtService, UserService } from 'app/shared';
         ReactiveFormsModule,
         HttpModule,
         RouterModule,
-        FlexLayoutModule,
+        FlexLayoutModule
     ],
     declarations: [
         ShowAuthedDirective,
     ],
     providers: [
+        {provide: AdService, useClass: MockAdService},
         ApiService,
         AuthGuard,
         JwtService,
-        UserService,
-        AdService,
+        UserService
     ],
     exports: [
         CommonModule,
@@ -38,4 +37,5 @@ import { ApiService, AuthGuard, JwtService, UserService } from 'app/shared';
         FlexLayoutModule,
     ]
 })
-export class SharedModule { }
+export class SharedModule {
+}
