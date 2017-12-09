@@ -1,5 +1,4 @@
-//export { UserModel } from '../../../../../server/src/model/user';
-export type UserModel = {
+export interface UserModel {
     _id: string;
     email: string;
     displayName: string;

@@ -1,7 +1,5 @@
 import { FormModule } from './form/form.module';
 import { DetailsModule } from './details/details.module';
-import { HeaderComponent } from './shared/layout/header.component';
-import { FooterComponent } from './shared/layout/footer.component';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { AuthGuard } from './shared/services';
@@ -13,6 +11,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './layout/header/header.component';
+import { FooterComponent } from './layout/footer/footer.component';
 
 const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
 

@@ -3,7 +3,7 @@ import { UserModel } from '../shared/models/user.model';
 import { AdService } from '../shared/services/ad.service';
 import { Component, OnInit } from '@angular/core';
 import { AdModel, ListAdsRequest } from '../shared/models/ad.model';
-import { UserService } from "app/shared";
+import { UserService } from '../shared';
 import { FilterService } from './filter.service';
 
 
