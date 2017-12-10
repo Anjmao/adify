@@ -8,12 +8,23 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { UsersComponent } from './users/users.component';
 import { AdsComponent } from './ads/ads.component';
 import { CompaniesComponent } from './companies/companies.component';
+import { LoginComponent } from './login/login.component';
+import { BexModule } from '../bex/bex.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        AdminRoutingModule
+        AdminRoutingModule,
+        BexModule
     ],
-    declarations: [DashboardComponent, AdminComponent, SidebarComponent, UsersComponent, AdsComponent, CompaniesComponent]
+    declarations: [
+        DashboardComponent,
+        AdminComponent,
+        SidebarComponent,
+        UsersComponent,
+        AdsComponent,
+        CompaniesComponent,
+        LoginComponent
+    ]
 })
 export class AdminModule { }
