@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared';
@@ -31,6 +32,7 @@ import { AppRoutingModule } from './app-routing.module';
         SharedModule,
         FormModule,
         DetailsModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]

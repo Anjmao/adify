@@ -1,8 +1,8 @@
 import { ListAdsRequest } from '../models/ad.model';
 import { ApiService } from './api.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable'
-import { AdModel, ListAdsResponse } from 'app/shared/models/ad.model';
+import { Observable } from 'rxjs/Observable';
+import { AdModel, ListAdsResponse } from '../models/ad.model';
 import { URLSearchParams } from '@angular/http';
 
 import 'rxjs/add/observable/of';
@@ -13,7 +13,7 @@ export class AdService {
     constructor(private apiService: ApiService) { }
 
     getAds(query: ListAdsRequest = {}): Observable<ListAdsResponse> {
-        let params = new URLSearchParams();
+        const params = new URLSearchParams();
         for (let key in query) {
             params.set(key.toString(), query[key]);
         }

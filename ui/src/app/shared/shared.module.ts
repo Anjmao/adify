@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ShowAuthedDirective } from './show-authed.directive';
 import { ApiService, AuthGuard, JwtService, UserService } from './services';
+import { DataService } from './services/data.service';
 
 @NgModule({
     imports: [
@@ -23,7 +24,8 @@ import { ApiService, AuthGuard, JwtService, UserService } from './services';
         ApiService,
         AuthGuard,
         JwtService,
-        UserService
+        UserService,
+        DataService
     ],
     exports: [
         CommonModule,

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -10,12 +11,15 @@ import { AdsComponent } from './ads/ads.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { LoginComponent } from './login/login.component';
 import { BexModule } from '../bex/bex.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
         CommonModule,
         AdminRoutingModule,
-        BexModule
+        BexModule,
+        NgxDatatableModule,
+        SharedModule
     ],
     declarations: [
         DashboardComponent,
