@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbsModule } from './breadcrumbs/breadcrumbs.module';
+import { CrudFormModule } from './crud-form/crud-form.module';
 
 @NgModule({
     imports: [
         CommonModule,
-        BreadcrumbsModule
+        BreadcrumbsModule,
+        CrudFormModule
     ],
     exports: [
-        BreadcrumbsModule
+        BreadcrumbsModule,
+        CrudFormModule
     ],
     declarations: []
 })

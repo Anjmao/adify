@@ -11,7 +11,7 @@ export class DataService {
 
     getCompanies(): Observable<Company[]> {
         return of(Array.from(Array(100))
-                .map((_, i) => ({ name: 'Company ' + i})))
+                .map((_, i) => ({ id: i, name: 'Company ' + i})))
                 .pipe(delay(1000));
     }
 }

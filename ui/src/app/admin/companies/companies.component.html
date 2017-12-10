@@ -1,5 +1,7 @@
 <h1>Companies</h1>
 
+<bex-crud-form *ngIf="crudForm" [form]="crudForm" (save)="onSave($event)"></bex-crud-form>
+
 <ngx-datatable
     class="material"
     [loadingIndicator]="loadingIndicator"
@@ -10,5 +12,8 @@
     [footerHeight]="50"
     [rowHeight]="'auto'"
     [limit]="15"
+    [selected]="selected"
+    [selectionType]="'single'"
+    (select)='onSelect($event)'
     [reorderable]="reorderable">
 </ngx-datatable>

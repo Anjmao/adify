@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { AdminRoutingModule } from './admin-routing.module';
@@ -18,6 +19,7 @@ import { SharedModule } from '../shared/shared.module';
         CommonModule,
         AdminRoutingModule,
         BexModule,
+        ReactiveFormsModule,
         NgxDatatableModule,
         SharedModule
     ],
