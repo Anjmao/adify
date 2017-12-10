@@ -13,8 +13,7 @@ import { SharedModule } from './shared';
 import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
-
-const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
     declarations: [
@@ -23,7 +22,7 @@ const rootRouting: ModuleWithProviders = RouterModule.forRoot([]);
         HeaderComponent,
     ],
     imports: [
-        rootRouting,
+        AppRoutingModule,
         AuthModule,
         HomeModule,
         BrowserModule,
