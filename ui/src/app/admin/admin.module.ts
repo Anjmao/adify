@@ -7,12 +7,13 @@ import { AdminComponent } from './admin.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UsersComponent } from './users/users.component';
 import { AdsComponent } from './ads/ads.component';
+import { CompaniesComponent } from './companies/companies.component';
 
 @NgModule({
     imports: [
         CommonModule,
         AdminRoutingModule
     ],
-    declarations: [DashboardComponent, AdminComponent, SidebarComponent, UsersComponent, AdsComponent]
+    declarations: [DashboardComponent, AdminComponent, SidebarComponent, UsersComponent, AdsComponent, CompaniesComponent]
 })
 export class AdminModule { }
