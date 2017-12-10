@@ -5,7 +5,7 @@ import { HomeComponent } from './home/home.component';
 const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
-    { path: '**', redirectTo: '' }
+    // { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -1,6 +1,8 @@
 <h1>Companies</h1>
 
-<bex-crud-form *ngIf="crudForm" [form]="crudForm" (save)="onSave($event)"></bex-crud-form>
+<div class="details-route">
+    <router-outlet></router-outlet>
+</div>
 
 <ngx-datatable
     class="material"

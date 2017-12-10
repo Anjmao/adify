@@ -1,3 +1,2 @@
-<p>
-  details works!
-</p>
+<a (click)="close()"><i class="material-icons">close</i></a>
+<bex-crud-form *ngIf="crudForm" [form]="crudForm" (save)="onSave($event)"></bex-crud-form>

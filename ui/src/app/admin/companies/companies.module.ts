@@ -5,14 +5,16 @@ import { DetailsComponent } from './details/details.component';
 import { CompaniesComponent } from './companies.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BexModule } from '../../bex/bex.module';
+import { CompaniesRoutingModule } from './companies-routing.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    BexModule,
-    NgxDatatableModule
-  ],
-  declarations: [DetailsComponent, CompaniesComponent]
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        BexModule,
+        NgxDatatableModule,
+        CompaniesRoutingModule
+    ],
+    declarations: [DetailsComponent, CompaniesComponent]
 })
 export class CompaniesModule { }

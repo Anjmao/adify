@@ -15,7 +15,7 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent },
             { path: 'users', component: UsersComponent },
             { path: 'ads', component: AdsComponent },
-            { path: 'companies', component: CompaniesComponent },
+            { path: 'companies', loadChildren: './companies/companies.module#CompaniesModule' },
         ]
     }
 ];
