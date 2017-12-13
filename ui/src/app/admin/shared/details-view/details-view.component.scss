@@ -1,7 +1,6 @@
 :host {
     position: absolute;
     z-index: 1000;
-    padding: 20px;
     background: #fff;
     width: 80%;
     right: 0;
@@ -11,8 +10,19 @@
 
 .header {
     display: flex;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
 
     .close-btn {
         cursor: default;
+        &:hover {
+            .material-icons {
+                color: #555555;
+            }
+        }
     }
+}
+
+.body {
+    padding: 15px;
 }

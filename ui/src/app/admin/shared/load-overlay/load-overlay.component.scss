@@ -2,6 +2,33 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #ccc;
-    opacity: 0.5;
 }
+
+.overlay-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #eeeeee;
+    opacity: .5;
+    z-index: 9998;
+}
+
+.loader-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+}
+.loader {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    svg path,
+    svg rect{
+        fill: #007bff;
+    }
+
+  }
