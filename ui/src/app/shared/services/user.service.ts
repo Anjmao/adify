@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
@@ -21,7 +20,6 @@ export class UserService {
 
     constructor(
         private apiService: ApiService,
-        private http: Http,
         private jwtService: JwtService
     ) { }
 
@@ -30,7 +28,7 @@ export class UserService {
             this.getUser()
                 .subscribe(
                 data => this.setAuth(data),
-                err => this.purgeAuth()
+                _ => this.purgeAuth()
                 );
         } else {
             this.purgeAuth();
@@ -43,7 +41,7 @@ export class UserService {
     }
 
     getUser(): Observable<UserModel> {
-        return this.apiService.get('/user')
+        return this.apiService.get('/user');
     }
 
     purgeAuth() {

@@ -56,25 +56,25 @@ export class BreadcrumbsService {
         let name: string;
         const routeEnd = route.substr(route.lastIndexOf('/') + 1, route.length);
 
-        this.routesFriendlyNames.forEach((value, key, map) => {
+        this.routesFriendlyNames.forEach((value, key) => {
             if (key === route) {
                 name = value;
             }
         });
 
-        this.routesFriendlyNamesRegex.forEach((value, key, map) => {
+        this.routesFriendlyNamesRegex.forEach((value, key) => {
             if (new RegExp(key).exec(route)) {
                 name = value;
             }
         });
 
-        this.routesWithCallback.forEach((value, key, map) => {
+        this.routesWithCallback.forEach((value, key) => {
             if (key === route) {
                 name = value(routeEnd);
             }
         });
 
-        this.routesWithCallbackRegex.forEach((value, key, map) => {
+        this.routesWithCallbackRegex.forEach((value, key) => {
             if (new RegExp(key).exec(route)) {
                 name = value(routeEnd);
             }

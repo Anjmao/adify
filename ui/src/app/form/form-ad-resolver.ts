@@ -2,23 +2,22 @@ import { Injectable, } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, Router, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
-import { AdService, UserService, AdModel } from 'app/shared';
+import { AdService, AdModel } from '../shared';
 
 @Injectable()
 export class FormAdResolver implements Resolve<AdModel> {
     constructor(
         private adService: AdService,
         private router: Router,
-        private userService: UserService
     ) { }
 
     resolve(
         route: ActivatedRouteSnapshot,
-        state: RouterStateSnapshot
+        _: RouterStateSnapshot
     ): Observable<any> {
 
         return this.adService.getAd(route.params['id'])
-            .catch((err) => this.router.navigateByUrl('/'));
+            .catch((_1) => this.router.navigateByUrl('/'));
 
     }
 }

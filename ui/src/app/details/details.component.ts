@@ -1,7 +1,6 @@
-import { AdModel, UserModel, AdService, UserService } from 'app/shared';
-import { ApiService } from 'app/shared/services';
+import { AdModel, UserModel, UserService } from '../shared';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-details',
@@ -16,7 +15,6 @@ export class DetailsComponent implements OnInit {
     constructor(
         userService: UserService,
         private route: ActivatedRoute,
-        private adService: AdService,
     ) {
         userService.currentUser.subscribe(u => this.user = u);
     }

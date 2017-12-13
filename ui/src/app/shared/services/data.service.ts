@@ -9,7 +9,7 @@ import { Company } from '../models/company.model';
 export class DataService {
     fakeCompanies = Array.from(Array(100)).map((_, i) => ({ id: i, name: 'Company ' + i}));
 
-    constructor(private http: HttpClient) { }
+    constructor(_: HttpClient) { }
 
     getCompanies(): Observable<Company[]> {
         return of(this.fakeCompanies).pipe(delay(1000));

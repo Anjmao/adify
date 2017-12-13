@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../shared';
 import { Company } from '../../shared/models/company.model';
-import { FormField, FieldType, CrudForm } from '../../bex';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({

@@ -1,2 +1,6 @@
-<a (click)="close()"><i class="material-icons">close</i></a>
-<bex-crud-form *ngIf="crudForm" [form]="crudForm" (save)="onSave($event)"></bex-crud-form>
+<app-details-view [loading]="loading" (close)="close()">
+    <div header>{{item?.name}}</div>
+    <div body>
+        <bex-crud-form *ngIf="crudForm" [form]="crudForm" (save)="onSave($event)"></bex-crud-form>
+    </div>
+</app-details-view>

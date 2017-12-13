@@ -1,10 +1,10 @@
-import { AdModel, UserModel, ListAdsRequest } from 'app/shared/models';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { FormControl } from '@angular/forms'
-import { UserService, AdService } from "app/shared";
-import { ActivatedRoute, Router } from "@angular/router";
+import { AdModel, UserModel, ListAdsRequest } from '../../shared/models';
+import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AdService, UserService } from '../../shared/index';
 
 @Component({
     selector: 'ads-list',
@@ -31,7 +31,7 @@ export class AdsListComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private router: Router,
+        _: Router,
         private adService: AdService,
         private userService: UserService,
     ) {

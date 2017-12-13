@@ -6,6 +6,7 @@ import { CompaniesComponent } from './companies.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BexModule } from '../../bex/bex.module';
 import { CompaniesRoutingModule } from './companies-routing.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { CompaniesRoutingModule } from './companies-routing.module';
         ReactiveFormsModule,
         BexModule,
         NgxDatatableModule,
-        CompaniesRoutingModule
+        CompaniesRoutingModule,
+        SharedModule
     ],
     declarations: [DetailsComponent, CompaniesComponent]
 })

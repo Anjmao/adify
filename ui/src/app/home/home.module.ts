@@ -5,7 +5,6 @@ import { HomeComponent } from './home.component';
 import { HomeAuthResolver } from './home-auth-resolver.service';
 import { SharedModule } from '../shared';
 import { AdsListComponent } from './list/list.component';
-import { UserMenuComponent } from './user-menu/user-menu.component';
 import { TestComponent } from './test/test.component';
 import { FilterService } from './filter.service';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -39,7 +38,6 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
     declarations: [
         HomeComponent,
         AdsListComponent,
-        UserMenuComponent,
         TestComponent
     ],
     providers: [

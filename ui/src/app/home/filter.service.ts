@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { AdModel, ListAdsResponse } from '../shared/models/ad.model';
-import { URLSearchParams } from '@angular/http';
 
 import 'rxjs/add/observable/of';
 

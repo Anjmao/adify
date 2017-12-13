@@ -1,0 +1,8 @@
+<app-load-overlay *ngIf="!loading"></app-load-overlay>
+<div class="header">
+    <a class="close-btn" (click)="closeDetails($e)"><i class="material-icons">close</i></a>
+    <ng-content select="[header]"></ng-content>
+</div>
+<div class="body">
+    <ng-content select="[body]"></ng-content>
+</div>

@@ -36,7 +36,7 @@ export class BreadcrumbsComponent implements OnInit, OnChanges, OnDestroy {
         });
     }
 
-    ngOnChanges(changes: any): void {
+    ngOnChanges(_: any): void {
         if (!this._urls) {
             return;
         }

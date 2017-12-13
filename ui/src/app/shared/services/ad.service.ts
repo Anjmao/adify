@@ -14,7 +14,8 @@ export class AdService {
 
     getAds(query: ListAdsRequest = {}): Observable<ListAdsResponse> {
         const params = new URLSearchParams();
-        for (let key in query) {
+        // tslint:disable-next-line:forin
+        for (const key in query) {
             params.set(key.toString(), query[key]);
         }
         return this.apiService.get('/ads', params);
@@ -45,7 +46,7 @@ export class MockAdService {
         {_id: '1', title: 'ad 1', content: 'test'}
     ];
 
-    getAds(query: ListAdsRequest = {}): Observable<ListAdsResponse> {
+    getAds(_: ListAdsRequest = {}): Observable<ListAdsResponse> {
         const rsp: ListAdsResponse = {
             ads: this.ads
         };
