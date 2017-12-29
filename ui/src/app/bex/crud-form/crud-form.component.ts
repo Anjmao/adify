@@ -36,7 +36,7 @@ export class FormField {
 }
 
 export class CrudForm {
-    constructor(private fields: FormField[]) {}
+    constructor(public fields: FormField[]) {}
 
     toReactiveForm(builder: FormBuilder) {
         const fieldsMap:  {[key: string]: any} = {};

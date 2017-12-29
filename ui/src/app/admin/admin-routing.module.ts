@@ -11,10 +11,10 @@ const routes: Routes = [
         component: AdminComponent,
         children: [
             { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-            { path: 'dashboard', component: DashboardComponent },
-            { path: 'users', component: UsersComponent },
-            { path: 'ads', component: AdsComponent },
-            { path: 'companies', loadChildren: './companies/companies.module#CompaniesModule' },
+            { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+            { path: 'users', component: UsersComponent, data: { title: 'Users' } },
+            { path: 'ads', component: AdsComponent, data: { title: 'Ads' } },
+            { path: 'companies', loadChildren: './companies/companies.module#CompaniesModule', data: { title: 'Companies' } },
         ]
     }
 ];

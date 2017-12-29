@@ -35,8 +35,8 @@ export class DetailsComponent implements OnInit, OnDestroy {
         this.sub.unsubscribe();
     }
 
-    onSave($e: Company) {
-        console.log('onSave', $e);
+    onSave($event) {
+        console.log('onSave', $event);
     }
 
     close() {

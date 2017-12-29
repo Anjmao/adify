@@ -24,8 +24,8 @@ export class CompaniesComponent implements OnInit {
     ];
 
     ngOnInit() {
-        this.dataService.getCompanies().subscribe(x => {
-            this.rows = x;
+        this.dataService.getCompanies().subscribe(rows => {
+            this.rows = rows;
             this.loadingIndicator = false;
         });
     }

@@ -1,6 +1,6 @@
-<app-load-overlay *ngIf="loading"></app-load-overlay>
+<bex-load-overlay *ngIf="loading"></bex-load-overlay>
 <div class="header">
-    <a class="close-btn" (click)="closeDetails($e)"><i class="material-icons">close</i></a>
+    <a class="close-btn" (click)="closeDetails($event)"><i class="material-icons">close</i></a>
     <ng-content select="[header]"></ng-content>
 </div>
 <div class="body">

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-load-overlay',
+  // tslint:disable-next-line:component-selector
+  selector: 'bex-load-overlay',
   templateUrl: './load-overlay.component.html',
   styleUrls: ['./load-overlay.component.scss']
 })
