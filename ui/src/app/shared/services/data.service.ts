@@ -7,12 +7,17 @@ import { Company } from '../models/company.model';
 
 @Injectable()
 export class DataService {
-    fakeCompanies = Array.from(Array(100)).map((_, i) => ({ id: i, name: 'Company ' + i}));
+    fakeCompanies = Array.from(Array(100)).map((_, i) => ({ id: i + 1, name: 'Company ' + i}));
 
     constructor(_: HttpClient) { }
 
     getCompanies(): Observable<Company[]> {
         return of(this.fakeCompanies).pipe(delay(1000));
+    }
+
+    saveCompany(company: Company): Observable<any> {
+        console.log('saveCompany', company);
+        return of(null);
     }
 
     getCompany(companyId: number): Observable<Company> {

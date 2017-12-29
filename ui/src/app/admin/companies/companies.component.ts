@@ -30,6 +30,10 @@ export class CompaniesComponent implements OnInit {
         });
     }
 
+    createNew() {
+        this.router.navigate(['details', 0], { relativeTo: this.route });
+    }
+
     onSelect($e) {
         const company: Company = $e.selected[0];
         this.router.navigate(['details', company.id], { relativeTo: this.route });
