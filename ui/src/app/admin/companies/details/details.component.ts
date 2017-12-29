@@ -13,6 +13,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
     crudForm = null;
     sub: any;
     loading;
+    selectedRow;
     constructor(private router: Router, private route: ActivatedRoute, private dataService: DataService) { }
 
     ngOnInit() {
@@ -22,6 +23,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
                 this.loading = true;
                 this.dataService.getCompany(id).subscribe(company => {
                     this.loading = false;
+                    this.selectedRow = company;
                     this.createForm(company);
                 });
             } else {

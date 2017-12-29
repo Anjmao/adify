@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { BreadcrumbsService } from './breadcrumbs.service';
 import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
@@ -19,7 +20,8 @@ export class BreadcrumbsComponent implements OnInit, OnChanges, OnDestroy {
 
     constructor(
         private router: Router,
-        private breadcrumbService: BreadcrumbsService
+        private breadcrumbService: BreadcrumbsService,
+        private cd: ChangeDetectorRef
     ) {}
 
     ngOnInit(): void {
@@ -31,11 +33,13 @@ export class BreadcrumbsComponent implements OnInit, OnChanges, OnDestroy {
 
         const currentUrl = this.router.routerState.snapshot.url;
         this.generateBreadcrumbTrail(currentUrl);
+        this.cd.detectChanges();
 
         this._routerSubscription = this.router.events.subscribe((navigationEnd: NavigationEnd) => {
            if (navigationEnd instanceof NavigationEnd) {
                 this._urls.length = 0;
                 this.generateBreadcrumbTrail(navigationEnd.urlAfterRedirects ? navigationEnd.urlAfterRedirects : navigationEnd.url);
+                this.cd.detectChanges();
             }
         });
     }
