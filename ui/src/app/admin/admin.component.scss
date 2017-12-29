@@ -19,15 +19,16 @@ app-admin {
 
 .ngx-datatable.material {
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    flex: 1;
 
     &.single-selection .datatable-body-row.active {
         .datatable-row-group {
-            background-color: #007bff;
+            background-color: #17a2b8;
         }
 
         &:hover {
             .datatable-row-group {
-                background-color: #007bff;
+                background-color: #17a2b8;
             }
         }
 
@@ -35,5 +36,34 @@ app-admin {
             color: #ffffff;
         }
     }
+
+    > div.visible {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .datatable-body {
+            flex: 1;
+        }
+    }
 }
 
+
+.page-header {
+    display: flex;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+
+    .title {
+        h1 {
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border: none;
+        }
+    }
+
+    .toolbar {
+        margin-left: auto;
+    }
+}

@@ -10,6 +10,9 @@ import { BreadcrumbsService } from './breadcrumbs.service';
     declarations: [
         BreadcrumbsComponent
     ],
+    exports: [
+        BreadcrumbsComponent
+    ],
     providers: [
         BreadcrumbsService
     ]

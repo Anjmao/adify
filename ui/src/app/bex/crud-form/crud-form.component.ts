@@ -1,14 +1,21 @@
 import { Component, OnChanges, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
 import { SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { Observable } from 'rxjs/Observable';
 
 export enum FieldType {
-    text,
-    number,
-    date,
-    textarea,
-    boolean,
-    select
+    text = 'text',
+    number = 'number',
+    date = 'date',
+    textarea = 'textarea',
+    boolean = 'boolean',
+    select = 'select'
+}
+
+interface FormFieldDataSource {
+    data: Observable<any>;
+    bindLabel: string;
+    bindValue: string;
 }
 
 export class FormField {
@@ -16,6 +23,7 @@ export class FormField {
     name: string;
     type: FieldType;
     value?: any;
+    dataSource?: FormFieldDataSource;
     readonly?: boolean;
     validators: (ValidatorFn | null | undefined)[];
 
@@ -24,19 +32,21 @@ export class FormField {
             name: string,
             type: FieldType,
             value?: any,
+            dataSource?: FormFieldDataSource;
             readonly?: boolean;
             validators?: (ValidatorFn | null | undefined)[]}) {
         this.prop = options.prop;
         this.name = options.name;
         this.type = options.type;
         this.value = options.value;
+        this.dataSource = options.dataSource;
         this.readonly = options.readonly;
         this.validators = this.validators;
     }
 }
 
 export class CrudForm {
-    constructor(private fields: FormField[]) {}
+    constructor(public fields: FormField[]) {}
 
     toReactiveForm(builder: FormBuilder) {
         const fieldsMap:  {[key: string]: any} = {};

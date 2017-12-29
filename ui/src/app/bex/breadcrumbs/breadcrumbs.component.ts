@@ -1,12 +1,14 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { BreadcrumbsService } from './breadcrumbs.service';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'bex-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbsComponent implements OnInit, OnChanges, OnDestroy {
     @Input() useBootstrap = true;
@@ -27,10 +29,12 @@ export class BreadcrumbsComponent implements OnInit, OnChanges, OnDestroy {
             this._urls.unshift(this.prefix);
         }
 
-        this._routerSubscription = this.router.events.subscribe((navigationEnd: NavigationEnd) => {
+        const currentUrl = this.router.routerState.snapshot.url;
+        this.generateBreadcrumbTrail(currentUrl);
 
+        this._routerSubscription = this.router.events.subscribe((navigationEnd: NavigationEnd) => {
            if (navigationEnd instanceof NavigationEnd) {
-                this._urls.length = 0; // Fastest way to clear out array
+                this._urls.length = 0;
                 this.generateBreadcrumbTrail(navigationEnd.urlAfterRedirects ? navigationEnd.urlAfterRedirects : navigationEnd.url);
             }
         });

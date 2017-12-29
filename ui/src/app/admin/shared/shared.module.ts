@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DetailsViewComponent } from './details-view/details-view.component';
-import { LoadOverlayComponent } from './load-overlay/load-overlay.component';
+import { BexModule } from '../../bex/bex.module';
 
 @NgModule({
     imports: [
-        CommonModule
+        CommonModule,
+        BexModule
     ],
-    declarations: [DetailsViewComponent, LoadOverlayComponent],
-    exports: [DetailsViewComponent, LoadOverlayComponent]
+    declarations: [DetailsViewComponent],
+    exports: [DetailsViewComponent]
 })
 export class SharedModule { }

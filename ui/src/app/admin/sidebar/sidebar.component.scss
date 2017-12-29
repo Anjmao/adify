@@ -16,6 +16,10 @@
 
     .nav-item {
         width: 100%;
+
+        a:not(.active) {
+            color: #212529;
+        }
     }
 
     .nav-item + .nav-item {
