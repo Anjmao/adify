@@ -1,12 +1,14 @@
 import { Component, OnInit, Input, OnChanges, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { BreadcrumbsService } from './breadcrumbs.service';
+import { ChangeDetectionStrategy } from '@angular/compiler/src/core';
 
 @Component({
   // tslint:disable-next-line:component-selector
   selector: 'bex-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
-  styleUrls: ['./breadcrumbs.component.scss']
+  styleUrls: ['./breadcrumbs.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BreadcrumbsComponent implements OnInit, OnChanges, OnDestroy {
     @Input() useBootstrap = true;
