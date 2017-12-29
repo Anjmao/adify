@@ -4,6 +4,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { UsersComponent } from './users/users.component';
 import { AdsComponent } from './ads/ads.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { DetailsComponent as CompaniesDetailsComponent } from './companies/details/details.component';
 
 const routes: Routes = [
     {
@@ -14,7 +16,14 @@ const routes: Routes = [
             { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
             { path: 'users', component: UsersComponent, data: { title: 'Users' } },
             { path: 'ads', component: AdsComponent, data: { title: 'Ads' } },
-            { path: 'companies', loadChildren: './companies/companies.module#CompaniesModule', data: { title: 'Companies' } },
+            {
+                path: 'companies',
+                component: CompaniesComponent,
+                // loadChildren: './companies/companies.module#CompaniesModule', data: { title: 'Companies' }
+                children: [
+                    { path: 'details/:id', component: CompaniesDetailsComponent }
+                ]
+            },
         ]
     }
 ];

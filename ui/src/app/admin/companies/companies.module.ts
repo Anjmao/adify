@@ -5,8 +5,8 @@ import { DetailsComponent } from './details/details.component';
 import { CompaniesComponent } from './companies.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BexModule } from '../../bex/bex.module';
-import { CompaniesRoutingModule } from './companies-routing.module';
 import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -14,8 +14,8 @@ import { SharedModule } from '../shared/shared.module';
         ReactiveFormsModule,
         BexModule,
         NgxDatatableModule,
-        CompaniesRoutingModule,
-        SharedModule
+        SharedModule,
+        RouterModule
     ],
     declarations: [DetailsComponent, CompaniesComponent]
 })

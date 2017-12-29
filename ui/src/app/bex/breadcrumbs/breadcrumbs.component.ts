@@ -27,10 +27,12 @@ export class BreadcrumbsComponent implements OnInit, OnChanges, OnDestroy {
             this._urls.unshift(this.prefix);
         }
 
-        this._routerSubscription = this.router.events.subscribe((navigationEnd: NavigationEnd) => {
+        const currentUrl = this.router.routerState.snapshot.url;
+        this.generateBreadcrumbTrail(currentUrl);
 
+        this._routerSubscription = this.router.events.subscribe((navigationEnd: NavigationEnd) => {
            if (navigationEnd instanceof NavigationEnd) {
-                this._urls.length = 0; // Fastest way to clear out array
+                this._urls.length = 0;
                 this.generateBreadcrumbTrail(navigationEnd.urlAfterRedirects ? navigationEnd.urlAfterRedirects : navigationEnd.url);
             }
         });
