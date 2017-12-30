@@ -48,8 +48,9 @@ export class DetailsComponent implements OnInit, OnDestroy {
 
     private createForm(item: AdModel) {
         this.crudForm = new CrudForm([
-            new FormField({ prop: 'id', name: 'Id', value: item.id, type: FieldType.text }),
+            new FormField({ prop: 'id', name: 'Id', value: item.id, type: FieldType.text, readonly: true }),
             new FormField({ prop: 'title', name: 'Title', value: item.title, type: FieldType.text }),
+            new FormField({ prop: 'content', name: 'Content', value: item.content, type: FieldType.editor }),
             new FormField({
                 prop: 'cityIds',
                 name: 'Cities',

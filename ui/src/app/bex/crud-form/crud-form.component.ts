@@ -11,6 +11,7 @@ export enum FieldType {
     boolean = 'boolean',
     select = 'select',
     multiSelect = 'multiSelect',
+    editor = 'editor'
 }
 
 interface FormFieldDataSource {

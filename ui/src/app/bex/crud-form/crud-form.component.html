@@ -3,8 +3,11 @@
         <label for="field-{{i}}">{{field.name}}</label>
         <ng-container [ngSwitch]="field.type">
             <ng-container *ngSwitchCase="'text'">
-                    <input id="field-{{i}}" class="form-control" type="text" [formControlName]="field.prop" />
+                    <input [readOnly]="field.readonly" id="field-{{i}}" class="form-control" type="text" [formControlName]="field.prop" />
             </ng-container>
+            <ng-container *ngSwitchCase="'editor'">
+                    <textarea class="form-control" [formControlName]="field.prop"></textarea>
+                </ng-container>
             <ng-container *ngSwitchCase="'select'">
                 <ng-select [formControlName]="field.prop"
                     [bindLabel]="field.dataSource.bindLabel"
@@ -25,5 +28,6 @@
 
     <div>
         <button (click)="saveForm()" class="btn btn-primary">Save</button>
+        <button (click)="saveForm()" class="btn btn-secondary">Cancel</button>
     </div>
 </form>

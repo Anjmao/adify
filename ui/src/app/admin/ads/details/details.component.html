@@ -1,5 +1,5 @@
 <app-details-view [loading]="loading" (close)="close()">
-    <div header>{{selectedRow?.name}}</div>
+    <div header>{{selectedRow?.title}}</div>
     <div body>
         <bex-crud-form *ngIf="crudForm" [form]="crudForm" (save)="onSave($event)"></bex-crud-form>
     </div>
