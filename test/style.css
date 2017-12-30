@@ -1,0 +1,39 @@
+html {
+    height: 100%;
+}
+body {
+    margin: 50px;
+    height: 100%;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.header {
+    background: burlywood;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+}
+
+.ngx-header {
+    background: #aaa;
+    min-height: 50px;
+}
+
+.ngx-body {
+    background: green;
+    flex: 1;
+}
+
+.ngx-footer {
+    background: pink;
+    min-height: 50px;
+}
