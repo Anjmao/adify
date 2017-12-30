@@ -43,7 +43,7 @@ export class MockAdService {
     constructor(private apiService: ApiService) { }
 
     ads: AdModel[] = [
-        {_id: '1', title: 'ad 1', content: 'test'}
+        {title: 'ad 1', content: 'test'}
     ];
 
     getAds(_: ListAdsRequest = {}): Observable<ListAdsResponse> {

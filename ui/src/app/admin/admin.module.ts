@@ -6,11 +6,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AdminComponent } from './admin.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { UsersComponent } from './users/users.component';
-import { AdsComponent } from './ads/ads.component';
 import { LoginComponent } from './login/login.component';
 import { BexModule } from '../bex/bex.module';
 import { SharedModule } from '../shared/shared.module';
 import { CompaniesModule } from './companies/companies.module';
+import { AdsModule } from './ads/ads.module';
 
 @NgModule({
     imports: [
@@ -19,14 +19,14 @@ import { CompaniesModule } from './companies/companies.module';
         BexModule,
         ReactiveFormsModule,
         SharedModule,
-        CompaniesModule
+        CompaniesModule,
+        AdsModule
     ],
     declarations: [
         DashboardComponent,
         AdminComponent,
         SidebarComponent,
         UsersComponent,
-        AdsComponent,
         LoginComponent
     ]
 })

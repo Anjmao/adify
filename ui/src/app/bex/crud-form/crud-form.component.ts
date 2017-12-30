@@ -9,7 +9,8 @@ export enum FieldType {
     date = 'date',
     textarea = 'textarea',
     boolean = 'boolean',
-    select = 'select'
+    select = 'select',
+    multiSelect = 'multiSelect',
 }
 
 interface FormFieldDataSource {
@@ -51,7 +52,7 @@ export class CrudForm {
     toReactiveForm(builder: FormBuilder) {
         const fieldsMap:  {[key: string]: any} = {};
         this.fields.forEach(field => {
-            fieldsMap[field.prop] = field.value || '';
+            fieldsMap[field.prop] = [field.value || ''];
         });
         return builder.group(fieldsMap);
     }

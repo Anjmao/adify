@@ -12,6 +12,14 @@
                     [items]="field.dataSource.data | async">
                 </ng-select>
             </ng-container>
+            <ng-container *ngSwitchCase="'multiSelect'">
+                <ng-select [formControlName]="field.prop"
+                    [multiple]="true"
+                    [bindLabel]="field.dataSource.bindLabel"
+                    [bindValue]="field.dataSource.bindValue"
+                    [items]="field.dataSource.data | async">
+                </ng-select>
+            </ng-container>
         </ng-container>
     </div>
 

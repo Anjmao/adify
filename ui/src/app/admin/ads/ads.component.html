@@ -1,3 +1,28 @@
-<p>
-  ads works!
-</p>
+<div class="page-header">
+    <div class="title">
+        <h1>Ads</h1>
+    </div>
+    <div class="toolbar">
+        <button class="btn btn-primary" (click)="createNew()">Create new</button>
+    </div>
+</div>
+
+<div class="details-route">
+    <router-outlet></router-outlet>
+</div>
+
+<ngx-datatable
+    class="material"
+    [loadingIndicator]="loadingIndicator"
+    [rows]="rows"
+    [columns]="columns"
+    [columnMode]="'force'"
+    [headerHeight]="50"
+    [footerHeight]="50"
+    [rowHeight]="'auto'"
+    [limit]="15"
+    [selected]="selected"
+    [selectionType]="'single'"
+    (select)='onSelect($event)'
+    [reorderable]="reorderable">
+</ngx-datatable>

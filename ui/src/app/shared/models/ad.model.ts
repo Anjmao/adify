@@ -1,7 +1,8 @@
 export interface AdModel {
-    _id: string;
-    title: string;
-    content: string;
+    id?: number;
+    title?: string;
+    content?: string;
+    cityIds?: number[];
 }
 
 export interface ListAdsResponse {

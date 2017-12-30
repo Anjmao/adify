@@ -4,8 +4,6 @@ import { RouterModule } from '@angular/router';
 import { HomeComponent } from './home.component';
 import { HomeAuthResolver } from './home-auth-resolver.service';
 import { SharedModule } from '../shared';
-import { AdsListComponent } from './list/list.component';
-import { TestComponent } from './test/test.component';
 import { FilterService } from './filter.service';
 import { NgSelectModule } from '@ng-select/ng-select';
 
@@ -15,17 +13,7 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
         component: HomeComponent,
         resolve: {
             isAuthenticated: HomeAuthResolver
-        },
-        children: [
-            {
-                path: '',
-                component: AdsListComponent,
-            },
-            {
-                path: 'test',
-                component: TestComponent
-            }
-        ]
+        }
     },
 ]);
 
@@ -36,9 +24,7 @@ const homeRouting: ModuleWithProviders = RouterModule.forChild([
         NgSelectModule
     ],
     declarations: [
-        HomeComponent,
-        AdsListComponent,
-        TestComponent
+        HomeComponent
     ],
     providers: [
         HomeAuthResolver,

@@ -1,4 +1,3 @@
-import { FormModule } from './form/form.module';
 import { DetailsModule } from './details/details.module';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
@@ -29,7 +28,6 @@ import { AppRoutingModule } from './app-routing.module';
         FormsModule,
         HttpModule,
         SharedModule,
-        FormModule,
         DetailsModule,
         HttpClientModule,
         BrowserAnimationsModule
