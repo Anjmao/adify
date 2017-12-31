@@ -10,7 +10,24 @@ server:
 schema:
 - name: api
   path: .
-  commands: {}
+  commands:
+    vet:
+        status: true
+    fmt:
+        status: true
+        args:
+        - -s
+        - -w
+    generate:
+        status: true
+    install:
+        status: true
+    build:
+        status: false
+        args:
+        - -race
+    run:
+        status: true
   watcher:
     paths:
     - /

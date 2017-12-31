@@ -1,18 +1,20 @@
 package main
 
 import (
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/anjmao/adify/api/db"
-	"github.com/anjmao/adify/api/handler"
+	"github.com/anjmao/adify/api/route/ad"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	"gopkg.in/go-playground/validator.v9"
-	"log"
+	validator "gopkg.in/go-playground/validator.v9"
 )
 
 func main() {
-	client, err := db.NewDataStoreClient("itjobs-179416")
+	projectID := os.Getenv("DATASTORE_PROJECT_ID")
+	client, err := db.NewDataStoreClient(projectID)
 	if err != nil {
 		log.Fatalf("error creating datastore client %v", err)
 	}
@@ -27,14 +29,11 @@ func main() {
 	e.Validator = &customValidator{validator: validator.New()}
 	e.Debug = true
 	e.Use(middleware.Logger())
+	e.Use(middleware.Recover())
 	e.GET("/", homePageHandler)
 	e.GET("/_ah/health", healthCheckHandler)
 
-	ads := handler.NewAdHandler(adDB)
-	e.GET("/ads/list", ads.GetAds)
-	e.POST("/ads", ads.CreateAd)
-	e.PUT("/ads/:id", ads.UpdateAd)
-	e.DELETE("/ads/:id", ads.DeleteAd)
+	ad.Register(e, adDB)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

@@ -1,8 +1,8 @@
-package handler
+package common
 
 import (
-	"strconv"
 	"errors"
+	"strconv"
 )
 
 func ParseInt64(val string) (int64, error) {

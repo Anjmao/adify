@@ -1,8 +1,9 @@
 package db
 
 import (
-	"cloud.google.com/go/datastore"
 	"fmt"
+
+	"cloud.google.com/go/datastore"
 	"github.com/anjmao/adify/api/model"
 	"golang.org/x/net/context"
 )
@@ -14,7 +15,7 @@ type datastoreDB struct {
 }
 
 type AdsDatabase interface {
-	ListAds(filter *model.ListAdsFilter) ([]*model.Ad, error)
+	ListAds() ([]*model.Ad, error)
 
 	ListAdsCreatedBy(userID string) ([]*model.Ad, error)
 
@@ -103,13 +104,10 @@ func (db *datastoreDB) UpdateAd(b *model.Ad) error {
 }
 
 // ListAds returns a list of ads, ordered by title.
-func (db *datastoreDB) ListAds(filter *model.ListAdsFilter) ([]*model.Ad, error) {
+func (db *datastoreDB) ListAds() ([]*model.Ad, error) {
 	ctx := context.Background()
 	ads := make([]*model.Ad, 0)
 	q := datastore.NewQuery("Ad").Limit(adsListPageLimit).Order("Title")
-	if filter.Page > 0 {
-		q = q.Offset(filter.Page * adsListPageLimit)
-	}
 
 	keys, err := db.client.GetAll(ctx, q, &ads)
 
@@ -129,7 +127,7 @@ func (db *datastoreDB) ListAds(filter *model.ListAdsFilter) ([]*model.Ad, error)
 func (db *datastoreDB) ListAdsCreatedBy(userID string) ([]*model.Ad, error) {
 	ctx := context.Background()
 	if userID == "" {
-		return db.ListAds(new(model.ListAdsFilter))
+		return db.ListAds()
 	}
 
 	ads := make([]*model.Ad, 0)

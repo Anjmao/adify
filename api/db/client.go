@@ -3,7 +3,6 @@ package db
 import (
 	"cloud.google.com/go/datastore"
 	"golang.org/x/net/context"
-	// "google.golang.org/api/option"
 )
 
 func NewDataStoreClient(projectID string) (*datastore.Client, error) {
