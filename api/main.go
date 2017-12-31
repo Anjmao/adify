@@ -7,6 +7,7 @@ import (
 
 	"github.com/anjmao/adify/api/db"
 	"github.com/anjmao/adify/api/route/ad"
+	"github.com/anjmao/adify/api/route/auth"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	validator "gopkg.in/go-playground/validator.v9"
@@ -34,6 +35,7 @@ func main() {
 	e.GET("/_ah/health", healthCheckHandler)
 
 	ad.Register(e, adDB)
+	auth.Register(e)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }
