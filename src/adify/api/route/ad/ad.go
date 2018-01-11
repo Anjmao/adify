@@ -3,10 +3,10 @@ package ad
 import (
 	"net/http"
 
-	"github.com/anjmao/adify/api/common"
-	"github.com/anjmao/adify/api/db"
-	"github.com/anjmao/adify/api/model"
-	"github.com/anjmao/adify/api/route"
+	"adify/api/common"
+	"adify/api/db"
+	"adify/api/model"
+	"adify/api/route"
 	"github.com/labstack/echo"
 )
 

@@ -4,7 +4,7 @@ import (
 	"fmt"
 
 	"cloud.google.com/go/datastore"
-	"github.com/anjmao/adify/api/model"
+	"adify/api/model"
 	"golang.org/x/net/context"
 )
 

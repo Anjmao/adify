@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/anjmao/adify/api/db"
-	"github.com/anjmao/adify/api/route/ad"
-	"github.com/anjmao/adify/api/route/auth"
+	"adify/api/db"
+	"adify/api/route/ad"
+	"adify/api/route/auth"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	validator "gopkg.in/go-playground/validator.v9"

@@ -1,6 +1,7 @@
 node_modules
 dist
-
-api/vendor
-auth/vendor
 .env
+pkg
+.idea
+.DS_Store
+bin
