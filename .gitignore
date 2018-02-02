@@ -1,6 +1,6 @@
 node_modules
 dist
 
-api/vendor
-auth/vendor
+backend/src/adify/vendor/*
 .env
+.idea
