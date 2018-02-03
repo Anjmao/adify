@@ -8,18 +8,18 @@ server:
   port: 5002
   host: localhost
 schema:
-- name: api
-  path: .
+- name: adify
+  path: ./cmd/adify
   commands:
     vet:
-        status: true
+        status: false
     fmt:
         status: true
         args:
         - -s
         - -w
     generate:
-        status: true
+        status: false
     install:
         status: true
     build:
@@ -30,10 +30,8 @@ schema:
         status: true
   watcher:
     paths:
-    - /
+    - ../../
     extensions:
     - go
     ignored_paths:
-    - .git
-    - .realize
-    - vendor
+    - ../../vendor

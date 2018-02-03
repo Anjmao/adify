@@ -2,5 +2,7 @@ node_modules
 dist
 
 backend/src/adify/vendor/*
+pkg
+bin
 .env
 .idea

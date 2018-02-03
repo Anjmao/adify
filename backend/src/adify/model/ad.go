@@ -5,3 +5,4 @@ type Ad struct {
 	Title   string
 	Content string
 }
+
