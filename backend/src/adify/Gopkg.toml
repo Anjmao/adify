@@ -22,17 +22,17 @@
 
 
 [[constraint]]
-  name = "cloud.google.com/go"
-  version = "0.17.0"
+  name = "github.com/jinzhu/gorm"
+  version = "1.0.0"
 
 [[constraint]]
   name = "github.com/labstack/echo"
-  version = "3.2.5"
-
-[[constraint]]
-  branch = "master"
-  name = "golang.org/x/net"
+  version = "3.2.6"
 
 [[constraint]]
   name = "gopkg.in/go-playground/validator.v9"
-  version = "9.9.1"
+  version = "9.9.3"
+
+[[constraint]]
+  name = "firebase.google.com/go"
+  version = "2.4.0"

@@ -1,17 +1,24 @@
 package main
 
 import (
-	"net/http"
-
-	"adify/model"
+	"github.com/jinzhu/gorm"
+	_ "github.com/jinzhu/gorm/dialects/postgres"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
-	validator "gopkg.in/go-playground/validator.v9"
+	"net/http"
 )
 
+
 func main() {
+
+	db, err := gorm.Open("postgres", "host=localhost user=admin dbname=adify sslmode=disable password=admin")
+	defer db.Close()
+	if err != nil {
+		panic(err)
+	}
+
+
 	e := echo.New()
-	e.Validator = &customValidator{validator: validator.New()}
 	e.Debug = true
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
@@ -29,10 +36,6 @@ func homePageHandler(c echo.Context) error {
 	return c.String(http.StatusOK, "hello")
 }
 
-type customValidator struct {
-	validator *validator.Validate
-}
+func test(db *gorm.DB) {
 
-func (cv *customValidator) Validate(i interface{}) error {
-	return cv.validator.Struct(i)
 }
