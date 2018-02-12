@@ -7,6 +7,10 @@ import { Company } from '../models/company.model';
 import { AdModel } from '../index';
 import { CityModel } from '../models/city.model';
 
+export interface LatestAdsResponse {
+
+}
+
 @Injectable()
 export class DataService {
     fakeCompanies = Array.from(Array(100)).map((_, i) => ({ id: i + 1, name: 'Company ' + i}));
@@ -34,6 +38,10 @@ export class DataService {
     saveCompany(company: Company): Observable<any> {
         console.log('saveCompany', company);
         return of(null);
+    }
+
+    getLatestAds() {
+
     }
 
     getCompany(companyId: number): Observable<Company> {

@@ -3,7 +3,7 @@ package auth
 import (
 	"net/http"
 
-	"adify/auth/claims"
+	"adify/auth/clai
 )
 
 // Context context

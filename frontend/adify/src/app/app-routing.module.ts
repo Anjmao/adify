@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from "./auth/login/login.component";
 
 const routes: Routes = [
-    { path: '', component: HomeComponent, data: { title: 'Home' } },
+    { path: '', redirectTo: 'home', data: { title: 'Home' }, pathMatch: 'full' },
+    { path: 'logic', component: LoginComponent },
     { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
     // { path: '**', redirectTo: '' }
 ];
@@ -12,4 +13,5 @@ const routes: Routes = [
     imports: [RouterModule.forRoot(routes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}
