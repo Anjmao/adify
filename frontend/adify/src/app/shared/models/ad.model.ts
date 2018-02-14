@@ -1,15 +1,17 @@
 export interface AdModel {
     id?: number;
-    title?: string;
-    content?: string;
-    cityIds?: number[];
+    photoUrl: string;
+    vehicleModel: string;
+    city: string;
+    price: number;
 }
 
-export interface ListAdsResponse {
-    ads: AdModel[];
+export interface GetAdsResponse {
+    result: AdModel[];
+    totalCount: number;
 }
 
-export interface ListAdsRequest {
+export interface GetAdsRequest {
     search?: string;
     cuser?: boolean;
 }

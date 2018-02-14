@@ -24,8 +24,8 @@ export class AdsComponent implements OnInit {
     ];
 
     ngOnInit() {
-        this.dataService.getAds().subscribe(rows => {
-            this.rows = rows;
+        this.dataService.getAds({}).subscribe(rows => {
+            this.rows = rows.result;
             this.loadingIndicator = false;
         });
     }

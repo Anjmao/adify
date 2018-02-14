@@ -27,7 +27,7 @@ export class DetailsComponent implements OnInit, OnDestroy {
                     this.createForm(ad);
                 });
             } else {
-                this.createForm({});
+                this.createForm(<any>{});
             }
         });
     }
@@ -49,12 +49,12 @@ export class DetailsComponent implements OnInit, OnDestroy {
     private createForm(item: AdModel) {
         this.crudForm = new CrudForm([
             new FormField({ prop: 'id', name: 'Id', value: item.id, type: FieldType.text, readonly: true }),
-            new FormField({ prop: 'title', name: 'Title', value: item.title, type: FieldType.text }),
-            new FormField({ prop: 'content', name: 'Content', value: item.content, type: FieldType.editor }),
+            new FormField({ prop: 'title', name: 'Title', value: item.vehicleModel, type: FieldType.text }),
+            new FormField({ prop: 'content', name: 'Content', value: item.vehicleModel, type: FieldType.editor }),
             new FormField({
                 prop: 'cityIds',
                 name: 'Cities',
-                value: item.cityIds,
+                value: null,
                 type: FieldType.multiSelect,
                 dataSource: {
                     data: this.dataService.getCities(),

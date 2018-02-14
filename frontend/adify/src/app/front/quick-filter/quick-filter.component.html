@@ -1,0 +1,10 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h2 class="jumbotron-heading text-white font-weight-light mb-4">Save time and money. Rent from locals.</h2>
+        <form class="form-inline justify-content-between filter-form">
+            <input (input)="filter.place = $event.target.value" type="text" class="form-control col-md-5" placeholder="City, Address" />
+            <input (input)="filter.date = $event.target.value" type="text" class="form-control col-md-5" placeholder="Date" />
+            <button (click)="search()" type="button" class="btn btn-primary"><i class="mdi mdi-search"></i> Search</button>
+        </form>
+    </div>
+</section>

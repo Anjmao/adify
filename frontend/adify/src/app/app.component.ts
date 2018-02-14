@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from './shared';
+//import { UserService } from './shared';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 
@@ -12,14 +12,14 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 })
 export class AppComponent implements OnInit {
     constructor(
-        private userService: UserService,
+        // private userService: UserService,
         private router: Router,
         private activatedRoute: ActivatedRoute,
         private titleService: Title
     ) { }
 
     ngOnInit() {
-        this.userService.populate();
+        // this.userService.populate();
         this.router.events.pipe(
             filter((event) => event instanceof NavigationEnd),
             map(() => this.activatedRoute),

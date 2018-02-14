@@ -6,7 +6,6 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/distinctUntilChanged';
 
-import { ApiService } from './api.service';
 import { JwtService } from './jwt.service';
 import { UserModel } from '../models';
 
@@ -19,7 +18,6 @@ export class UserService {
     public isAuthenticated = this.isAuthenticatedSubject.asObservable();
 
     constructor(
-        private apiService: ApiService,
         private jwtService: JwtService
     ) { }
 
@@ -41,7 +39,8 @@ export class UserService {
     }
 
     getUser(): Observable<UserModel> {
-        return this.apiService.get('/user');
+        return null;
+        // return this.apiService.get('/user');
     }
 
     purgeAuth() {
@@ -50,33 +49,17 @@ export class UserService {
         this.isAuthenticatedSubject.next(false);
     }
 
-    attemptAuth(type, credentials): Observable<UserModel> {
-        const route = (type === 'login') ? '/login' : '';
-        return this.apiService.post('/users' + route, { user: credentials })
-            .map(
-            data => {
-                this.setAuth(data.user);
-                return data;
-            }
-            );
-    }
 
     getCurrentUser(): UserModel {
         return this.currentUserSubject.value;
     }
 
     // Update the user on the server (email, pass, etc)
-    update(user): Observable<UserModel> {
-        return this.apiService
-            .put('/user', { user })
-            .map(data => {
-                // Update the currentUser observable
-                this.currentUserSubject.next(data.user);
-                return data.user;
-            });
+    update(_): Observable<UserModel> {
+        return null;
     }
 
     logout(): Observable<any> {
-        return this.apiService.get('/user/logout').map(() => this.purgeAuth())
+        return null;
     }
 }

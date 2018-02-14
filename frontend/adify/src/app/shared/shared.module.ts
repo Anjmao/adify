@@ -1,38 +1,35 @@
-import { AdService, MockAdService } from './services/ad.service';
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import { ShowAuthedDirective } from './show-authed.directive';
-import { ApiService, AuthGuard, JwtService, UserService } from './services';
+import { AuthGuard, JwtService } from './services';
 import { DataService } from './services/data.service';
+import { HttpClientModule } from "@angular/common/http";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
+        HttpClientModule,
         ReactiveFormsModule,
-        HttpModule,
-        RouterModule
+        RouterModule,
     ],
     declarations: [
         ShowAuthedDirective,
     ],
     providers: [
-        {provide: AdService, useClass: MockAdService},
-        ApiService,
         AuthGuard,
         JwtService,
-        UserService,
         DataService
     ],
     exports: [
         CommonModule,
         FormsModule,
         ReactiveFormsModule,
-        HttpModule,
         RouterModule,
+        HttpClientModule,
         ShowAuthedDirective
     ]
 })

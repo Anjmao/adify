@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FrontComponent } from "./front.component";
 import { HomeComponent } from "./home/home.component";
+import { AdsListComponent } from "./ads-list/ads-list.component";
 
 const routes: Routes = [
     {
@@ -9,6 +10,7 @@ const routes: Routes = [
         children: [
             { path: '', component: HomeComponent },
             { path: 'home', component: HomeComponent },
+            { path: 'ads', component: AdsListComponent },
         ]
     }
 ];
