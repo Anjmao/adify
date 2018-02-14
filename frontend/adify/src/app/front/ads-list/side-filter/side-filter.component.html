@@ -1,7 +1,17 @@
 <div class="card mb-4 box-shadow">
     <div class="card-body">
-        <mat-slider
-            class="example-margin">
-        </mat-slider>
+        <label>Model</label>
+        <ng-select placeholder="Model">
+            <ng-option [value]="audi">Audi</ng-option>
+            <ng-option [value]="bmw">BMW</ng-option>
+            <ng-option [value]="pegeot">Pegeot</ng-option>
+        </ng-select>
+        <hr />
+        <label>Fuel</label>
+        <ng-select placeholder="Fuel">
+            <ng-option [value]="audi">Patrol</ng-option>
+            <ng-option [value]="bmw">Diesel</ng-option>
+            <ng-option [value]="pegeot">Electric</ng-option>
+        </ng-select>
     </div>
 </div>

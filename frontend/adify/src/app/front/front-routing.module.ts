@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { FrontComponent } from "./front.component";
 import { HomeComponent } from "./home/home.component";
 import { AdsListComponent } from "./ads-list/ads-list.component";
+import { AdDetailsComponent } from "./ad-details/ad-details.component";
 
 const routes: Routes = [
     {
@@ -11,6 +12,7 @@ const routes: Routes = [
             { path: '', component: HomeComponent },
             { path: 'home', component: HomeComponent },
             { path: 'ads', component: AdsListComponent },
+            { path: 'ad/:id', component: AdDetailsComponent },
         ]
     }
 ];
